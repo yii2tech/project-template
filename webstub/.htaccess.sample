@@ -1,0 +1,25 @@
+<Files ~ "(\.(inc|module|pl|sh|sql|theme|engine|xtmpl|svn-base|mysql|pgsql|less|scss|sass|styl|coffee|ts)|.htaccess.sample|.git|.gitignore|.gitkeep|Root|text-base|prop-base|props|wcprops|entries|format|scripts|database)$">
+	Order deny,allow
+	Deny from all
+</Files>
+
+Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine on
+
+# Redirect to www:
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+#RewriteCond %{HTTPS} on
+#RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Front
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php [L]

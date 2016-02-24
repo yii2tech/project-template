@@ -1,0 +1,71 @@
+<?php
+/**
+ * Local configuration file.
+ */
+
+// comment out the following two lines when deployed to production
+defined('YII_DEBUG') or define('YII_DEBUG', {{yiiDebug}});
+defined('YII_ENV') or define('YII_ENV', '{{yiiEnv}}');
+
+// default file permission mask:
+umask(0002); // invert of 0775
+
+$developerIPs = [
+    '127.0.0.1',
+    '::1',
+];
+
+$config = [
+    'components' => [
+        // Uncomment following to use MemCache :
+        /*'cache' => [
+            'class' => 'yii\caching\MemCache',
+            'servers' => [
+                [
+                    'host' => 'localhost',
+                    'port' => 11211,
+                    'weight' => 100,
+                ],
+            ],
+        ],*/
+        /*'mailer' => [
+            'useFileTransport' => true,
+        ],*/
+        'db' => [
+            'dsn' => 'mysql:host={{dbHost}};dbname={{dbName}}',
+            'username' => '{{dbUser}}',
+            'password' => '{{dbPassword}}',
+        ],
+        /*'assetManager' => [
+            'linkAssets' => true,
+            'converter' => [
+                'forceConvert' => true,
+            ],
+        ],*/
+    ],
+];
+
+if (YII_ENV === 'dev' && empty($_SERVER['argv'])) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        'allowedIPs' => $developerIPs
+    ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'generators' => [
+            'adminMainFrame' => [
+                'class' => 'yii2tech\admin\gii\mainframe\Generator'
+            ],
+            'adminCrud' => [
+                'class' => 'yii2tech\admin\gii\crud\Generator'
+            ],
+        ],
+        'allowedIPs' => $developerIPs
+    ];
+}
+
+return $config;

@@ -1,0 +1,50 @@
+{
+    "name": "yii2tech/project-template",
+    "description": "Yii 2 Project Template from yii2tech",
+    "keywords": ["yii2", "framework", "project template"],
+    "homepage": "https://github.com/yii2tech/project-template",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yii2tech/project-template/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "https://github.com/yii2tech/project-template/wiki",
+        "source": "https://github.com/yii2tech/project-template"
+    },
+    "authors": [
+        {
+            "name": "Paul Klimov",
+            "email": "pklimov@quartsoft.com",
+            "role": "Project architect"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": ">=2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yii2tech/admin": "*",
+        "yii2tech/ar-softdelete": "*",
+        "yii2tech/authlog": "*",
+        "yii2tech/install": "*",
+        "yii2tech/filedb": "*",
+        "yii2tech/selfupdate": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
