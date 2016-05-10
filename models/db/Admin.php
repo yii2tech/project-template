@@ -30,9 +30,7 @@ class Admin extends Identity
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [
-                // add extra validation here
-            ],
+            // add extra validation here
         ]);
     }
 

@@ -11,14 +11,14 @@ $this->title = Yii::t('admin', '{appName} Administration', [
 $blocks = [
     [
         'title' => Yii::t('admin', 'Users'),
-        'description' => Yii::t('admin', 'Users brief'),
+        'description' => Yii::t('admin', 'Manage users accounts'),
         'label' => Yii::t('admin', 'Users'),
         'icon' => 'user',
         'url' => ['/user/index'],
     ],
     [
         'title' => Yii::t('admin', 'Administrators'),
-        'description' => Yii::t('admin', 'Administrators brief'),
+        'description' => Yii::t('admin', 'Manage administrator accounts'),
         'label' => Yii::t('admin', 'Administrators'),
         'icon' => 'user',
         'url' => ['/admin/index'],

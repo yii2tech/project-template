@@ -7,15 +7,15 @@ use app\models\db\Identity;
 
 return [
     Identity::STATUS_ACTIVE => [
-        'name' => 'Active'
+        'name' => Yii::t('status', 'Active')
     ],
     Identity::STATUS_SUSPENDED => [
-        'name' => 'Suspended'
+        'name' => Yii::t('status', 'Suspended')
     ],
     Identity::STATUS_PENDING => [
-        'name' => 'Pending'
+        'name' => Yii::t('status', 'Pending')
     ],
     Identity::STATUS_DELETED => [
-        'name' => 'Deleted'
+        'name' => Yii::t('status', 'Deleted')
     ],
 ];

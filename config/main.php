@@ -41,7 +41,7 @@ return yii\helpers\ArrayHelper::merge(
                 'class' => 'yii2tech\filedb\Connection',
                 'path' => '@app/models/filedb/data',
             ],
-            /*'i18n' => [
+            'i18n' => [
                 'translations' => [
                     'yii2tech-admin' => [
                         'class' => 'yii\i18n\PhpMessageSource',
@@ -52,7 +52,7 @@ return yii\helpers\ArrayHelper::merge(
                         'forceTranslation' => true,
                     ],
                 ],
-            ],*/
+            ],
         ],
         'params' => require(__DIR__ . '/params.php'),
     ],

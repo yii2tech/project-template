@@ -69,21 +69,19 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
             ],
-            [
-                'softDeleteBehavior' => [
-                    'class' => SoftDeleteBehavior::className(),
-                    'softDeleteAttributeValues' => [
-                        'statusId' => self::STATUS_DELETED,
-                        'updatedAt' => function () {
-                            return time();
-                        },
-                    ],
-                    'restoreAttributeValues' => [
-                        'statusId' => self::STATUS_ACTIVE,
-                        'updatedAt' => function () {
-                            return time();
-                        },
-                    ],
+            'softDelete' => [
+                'class' => SoftDeleteBehavior::className(),
+                'softDeleteAttributeValues' => [
+                    'statusId' => self::STATUS_DELETED,
+                    'updatedAt' => function () {
+                        return time();
+                    },
+                ],
+                'restoreAttributeValues' => [
+                    'statusId' => self::STATUS_ACTIVE,
+                    'updatedAt' => function () {
+                        return time();
+                    },
                 ],
             ],
             'authLog' => [

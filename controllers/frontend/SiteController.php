@@ -2,14 +2,11 @@
 
 namespace app\controllers\frontend;
 
-use app\models\frontend\CollaborationRequestForm;
 use Yii;
 use yii\base\Action;
 use yii\filters\AccessControl;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\widgets\ActiveForm;
 
 class SiteController extends Controller
 {
