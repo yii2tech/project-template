@@ -2,7 +2,6 @@
 
 namespace app\models\backend;
 
-use app\models\db\Organization;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -28,7 +27,7 @@ class UserSearch extends Model
     public function rules()
     {
         return [
-            [['id', 'statusId', 'roleId'], 'integer'],
+            [['id', 'statusId'], 'integer'],
             [$this->attributes(), 'safe'],
         ];
     }
