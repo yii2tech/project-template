@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = Yii::t('help', 'Contact');
 $formatter = Yii::$app->formatter;
 ?>
 <div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Yii::t('help', 'Contact') ?></h1>
 
     <p>
         <?= Yii::t('help', 'If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.') ?>
@@ -37,7 +37,7 @@ $formatter = Yii::$app->formatter;
             ]) ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                <?= Html::submitButton(Yii::t('common', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

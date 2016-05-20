@@ -13,35 +13,6 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index'],
-                'rules' => [
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => false,
-                        'roles' => ['@'],
-                        'denyCallback' => function($rule, $action) {
-                            /* @var $action Action */
-                            return $action->controller->redirect(['/account/index']);
-                        },
-                    ],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function actions()
     {
         return [

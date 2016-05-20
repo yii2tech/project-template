@@ -8,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $model app\models\db\User */
 
 $this->title = Yii::t('user', 'Edit profile at {appName}', ['appName' => Yii::$app->name]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Dashboard'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('user', 'Profile');
 ?>
 <div class="account-profile">

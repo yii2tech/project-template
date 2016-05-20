@@ -125,8 +125,8 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
             'email' => Yii::t('user', 'Email'),
             'createdAt' => Yii::t('user', 'Created at'),
             'updatedAt' => Yii::t('user', 'Updated at'),
-            'statusId' => Yii::t('user', 'Status'),
-            'password' => Yii::t('user', 'Password'),
+            'statusId' => Yii::t('common', 'Status'),
+            'password' => Yii::t('auth', 'Password'),
         ];
     }
 
@@ -147,9 +147,6 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
             }
             if (!isset($this->statusId)) {
                 $this->statusId = self::STATUS_ACTIVE;
-            }
-            if (!isset($this->languageId)) {
-                $this->languageId = Yii::$app->language;
             }
         }
 

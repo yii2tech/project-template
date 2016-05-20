@@ -3,7 +3,6 @@
 namespace app\models\frontend;
 
 use app\models\db\Admin;
-use app\validators\PhoneValidator;
 use Yii;
 use yii\base\Model;
 
@@ -36,10 +35,10 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('contact', 'Name'),
-            'subject' => Yii::t('contact', 'Subject'),
-            'body' => Yii::t('contact', 'Body'),
-            'email' => Yii::t('contact', 'Email'),
+            'name' => Yii::t('common', 'Name'),
+            'subject' => Yii::t('common', 'Subject'),
+            'body' => Yii::t('common', 'Body'),
+            'email' => Yii::t('common', 'Email'),
             'verifyCode' => Yii::t('common', 'Verification Code'),
         ];
     }

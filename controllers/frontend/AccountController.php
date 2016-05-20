@@ -51,7 +51,8 @@ class AccountController extends Controller
         $model = Yii::$app->user->identity;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('userProfileFormSubmitted');
+            Yii::$app->session->setFlash('success', Yii::t('user', 'Your profile has been updated.'));
+
             return $this->redirect(Url::current(['language' => $model->languageId]));
         }
 
@@ -69,7 +70,8 @@ class AccountController extends Controller
         $model = new ChangePasswordForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->apply()) {
-            Yii::$app->session->setFlash('changePasswordFormSubmitted');
+            Yii::$app->session->setFlash('success', Yii::t('user', 'Your profile has been changed.'));
+
             return $this->refresh();
         }
 

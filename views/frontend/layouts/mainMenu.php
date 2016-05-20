@@ -26,6 +26,7 @@ if ($webUser->isGuest) {
     $menuItems[] = ['label' => Yii::t('menu', 'Signup'), 'url' => ['/signup/index']];
     $menuItems[] = ['label' => Yii::t('menu', 'Login'), 'url' => ['/auth/login']];
 } else {
+    $menuItems[] = ['label' => Yii::t('menu', 'Account'), 'url' => ['/account/index']];
     $menuItems[] = '<li>'
         . Html::beginForm(['/auth/logout'], 'post')
         . Html::submitButton(

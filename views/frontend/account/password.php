@@ -8,8 +8,8 @@ use yii\bootstrap\ActiveForm;
 /* @var $model app\models\frontend\ChangePasswordForm */
 
 $this->title = Yii::t('user', 'Change password for {appName}', ['appName' => Yii::$app->name]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Dashboard'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('user', 'Change Password');
-
 ?>
 <div class="account-password">
     <h1><?= Html::encode(Yii::t('user', 'Change Password')) ?></h1>

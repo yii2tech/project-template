@@ -23,7 +23,7 @@ class SignupForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            [['email', 'fullName', 'phone'], 'required'],
+            [['email'], 'required'],
 
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
@@ -41,7 +41,7 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'email' => Yii::t('user', 'Email'),
+            'email' => Yii::t('common', 'Email'),
             'password' => Yii::t('auth', 'Password'),
             'verifyCode' => Yii::t('common', 'Verification Code'),
         ];
@@ -62,9 +62,9 @@ class SignupForm extends Model
         $user = new User();
         $user->email = $this->email;
         $user->password = $this->password;
-        $user->statusId = User::STATUS_PENDING;
+        $user->statusId = User::STATUS_ACTIVE;
         if ($user->save(false)) {
-            $user->sendSignupConfirmEmail();
+            $user->sendNewUserEmail();
             return $user;
         }
 

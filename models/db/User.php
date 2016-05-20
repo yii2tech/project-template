@@ -52,15 +52,15 @@ class User extends Identity
     // Logic :
 
     /**
-     * Sends signup confirmation email.
+     * Sends email notification about account creation.
      * @return boolean success.
      */
-    public function sendSignupConfirmEmail()
+    public function sendNewUserEmail()
     {
-        return Yii::$app->mailer->compose('signupConfirm', ['user' => $this])
+        return Yii::$app->mailer->compose('newUser', ['user' => $this])
             ->setTo($this->email)
             ->setFrom([Yii::$app->params['appEmail'] => Yii::$app->name])
-            ->setSubject(Yii::t('auth', 'Confirm Signup at {appName}', ['appName' => Yii::$app->name]))
+            ->setSubject(Yii::t('user', 'Your account at {appName}', ['appName' => Yii::$app->name]))
             ->send();
     }
 
