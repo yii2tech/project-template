@@ -49,7 +49,7 @@ return yii\helpers\ArrayHelper::merge(
                     ],
                     '*' => [
                         'class' => 'yii\i18n\PhpMessageSource',
-                        'forceTranslation' => true,
+                        //'forceTranslation' => true,
                     ],
                 ],
             ],

@@ -53,3 +53,13 @@ Admin section with context generation:
 ```
 php yii gii/adminCrud --modelClass="app\models\db\{NAME}" --controllerClass="app\controllers\backend\{NAME}Controller" --searchModelClass="app\models\backend\{NAME}Search" --viewPath="@app/views/backend/{NAME}" --contextClass="app\models\db\{CONTEXT}" --enableI18N=1
 ```
+
+
+I18N
+----
+
+Translation messages generation:
+
+```
+php yii message messages/config.php
+```

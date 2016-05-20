@@ -12,6 +12,9 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use app\models\frontend\LoginForm;
 
+/**
+ * AuthController handles web user authentication and related process such as password reset.
+ */
 class AuthController extends Controller
 {
     /**
@@ -41,7 +44,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Login form
+     * Logs in a user.
      * @return mixed response
      */
     public function actionLogin()
@@ -53,20 +56,15 @@ class AuthController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        }
-
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('login', [
+        } else {
+            return $this->render('login', [
                 'model' => $model,
             ]);
         }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
     }
 
     /**
-     * Logout
+     * Logs out the current user.
      * @return mixed response
      */
     public function actionLogout()
@@ -78,8 +76,7 @@ class AuthController extends Controller
 
     /**
      * Requests password reset.
-     *
-     * @return mixed
+     * @return mixed response
      */
     public function actionRequestPasswordReset()
     {
@@ -90,19 +87,14 @@ class AuthController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->send()) {
-                Yii::$app->session->setFlash('passwordResetRequestSubmitted', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
-                //return $this->goHome();
+                return $this->goHome();
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
             }
         }
 
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('requestPasswordResetToken', [
-                'model' => $model,
-            ]);
-        }
         return $this->render('requestPasswordResetToken', [
             'model' => $model,
         ]);
@@ -110,10 +102,9 @@ class AuthController extends Controller
 
     /**
      * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
+     * @param string $token password reset token
+     * @return mixed response
+     * @throws BadRequestHttpException on invalid token.
      */
     public function actionResetPassword($token)
     {
@@ -129,11 +120,6 @@ class AuthController extends Controller
             return $this->redirect(Yii::$app->user->loginUrl);
         }
 
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('resetPassword', [
-                'model' => $model,
-            ]);
-        }
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
