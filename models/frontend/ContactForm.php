@@ -23,7 +23,7 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            [['name', 'email', 'phone', 'subject', 'body'], 'required'],
+            [['name', 'email', 'subject', 'body'], 'required'],
             ['email', 'email'],
             ['verifyCode', 'captcha'],
         ];
@@ -55,7 +55,7 @@ class ContactForm extends Model
                 Yii::$app->mailer->compose('contact', ['form' => $this, 'admin' => $admin])
                     ->setTo($admin->email)
                     ->setFrom([Yii::$app->params['appEmail'] => Yii::$app->name])
-                    ->setSubject(Yii::t('help', '{appName} Contact Inquiry: {subject}', ['appName' => Yii::$app->name, 'subject' => $this->subject], $admin->languageId))
+                    ->setSubject(Yii::t('help', '{appName} Contact Inquiry: {subject}', ['appName' => Yii::$app->name, 'subject' => $this->subject]))
                     ->send();
             }
 

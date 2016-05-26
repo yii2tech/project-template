@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
@@ -15,7 +16,7 @@ use yii\widgets\Breadcrumbs;
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
 
-        <?php /* <?= Alert::widget() ?> */?>
+        <?= Alert::widget() ?>
 
         <?= $content ?>
     </div>

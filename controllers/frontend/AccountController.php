@@ -6,7 +6,6 @@ use app\models\frontend\ChangePasswordForm;
 use app\models\db\User;
 use Yii;
 use yii\filters\AccessControl;
-use yii\helpers\Url;
 use yii\web\Controller;
 
 /**
@@ -53,7 +52,7 @@ class AccountController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('user', 'Your profile has been updated.'));
 
-            return $this->redirect(Url::current(['language' => $model->languageId]));
+            return $this->refresh();
         }
 
         return $this->render('profile', [
