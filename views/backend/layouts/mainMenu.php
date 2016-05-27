@@ -24,6 +24,22 @@ if (!$webUser->isGuest) {
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             [
+                'label' => Yii::t('admin', 'Settings'),
+                'icon' => 'cog',
+                'items' => [
+                    [
+                        'label' => Yii::t('admin', 'Application Configuration'),
+                        'icon' => 'cog',
+                        'url' => ['/config/index'],
+                    ],
+                    [
+                        'label' => Yii::t('admin', 'Maintenance'),
+                        'icon' => 'wrench',
+                        'url' => ['/maintenance/index'],
+                    ],
+                ],
+            ],
+            [
                 'label' => Yii::t('admin', 'Users'),
                 'icon' => 'user',
                 'items' => [

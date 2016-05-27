@@ -8,7 +8,10 @@ return yii\helpers\ArrayHelper::merge(
         'id' => 'my-project',
         'name' => 'MyProject',
         'basePath' => dirname(__DIR__),
-        'bootstrap' => ['log'],
+        'bootstrap' => [
+            'log',
+            'configManager',
+        ],
         'components' => [
             'cache' => [
                 'class' => 'yii\caching\FileCache',
@@ -40,6 +43,30 @@ return yii\helpers\ArrayHelper::merge(
             'filedb' => [
                 'class' => 'yii2tech\filedb\Connection',
                 'path' => '@app/models/filedb/data',
+            ],
+            'configManager' => [
+                'class' => 'yii2tech\config\Manager',
+                'storage' => [
+                    'class' => 'yii2tech\config\StorageDb',
+                    'table' => 'AppConfig',
+                ],
+                'items' => [
+                    'appName' => [
+                        'path' => 'name',
+                        'label' => 'Application Name',
+                        'rules' => [
+                            ['required']
+                        ],
+                    ],
+                    'appEmail' => [
+                        //'path' => 'params.appEmail',
+                        'label' => 'Application Email',
+                        'rules' => [
+                            ['required'],
+                            ['email'],
+                        ],
+                    ],
+                ],
             ],
             'i18n' => [
                 'translations' => [

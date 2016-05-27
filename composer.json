@@ -28,6 +28,7 @@
         "yii2tech/admin": "*",
         "yii2tech/ar-softdelete": "*",
         "yii2tech/authlog": "*",
+        "yii2tech/config": "*",
         "yii2tech/install": "*",
         "yii2tech/filedb": "*",
         "yii2tech/selfupdate": "*"
