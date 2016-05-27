@@ -10,18 +10,32 @@ $this->title = Yii::t('admin', '{appName} Administration', [
 
 $blocks = [
     [
-        'title' => Yii::t('admin', 'Users'),
-        'description' => Yii::t('admin', 'Manage users accounts'),
-        'label' => Yii::t('admin', 'Users'),
-        'icon' => 'user',
-        'url' => ['/user/index'],
+        'title' => Yii::t('admin', 'Application Configuration'),
+        'description' => Yii::t('admin-content', 'Setup application name, email etc.'),
+        'label' => Yii::t('admin', 'Application Configuration'),
+        'icon' => 'cog',
+        'url' => ['/config/index'],
+    ],
+    [
+        'title' => Yii::t('admin', 'Maintenance'),
+        'description' => Yii::t('admin-content', 'Maintenance: flush cache, etc.'),
+        'label' => Yii::t('admin', 'Maintenance'),
+        'icon' => 'wrench',
+        'url' => ['/maintenance/index'],
     ],
     [
         'title' => Yii::t('admin', 'Administrators'),
-        'description' => Yii::t('admin', 'Manage administrator accounts'),
+        'description' => Yii::t('admin-content', 'Manage administrator accounts'),
         'label' => Yii::t('admin', 'Administrators'),
         'icon' => 'user',
         'url' => ['/admin/index'],
+    ],
+    [
+        'title' => Yii::t('admin', 'Users'),
+        'description' => Yii::t('admin-content', 'Manage users accounts'),
+        'label' => Yii::t('admin', 'Users'),
+        'icon' => 'user',
+        'url' => ['/user/index'],
     ],
 ];
 ?>

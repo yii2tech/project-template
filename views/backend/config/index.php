@@ -38,9 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endforeach;?>
 
         <div class="form-group">
-            <?= Html::a('Restore defaults', ['default'], ['class' => 'btn btn-danger', 'data-confirm' => 'Are you sure you want to restore default values?']); ?>
+            <?= Html::a(Yii::t('admin', 'Restore defaults'), ['default'], ['class' => 'btn btn-danger', 'data-confirm' => Yii::t('admin', 'Are you sure you want to restore default values?')]); ?>
             &nbsp;
-            <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('admin', 'Save'), ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
