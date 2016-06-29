@@ -23,12 +23,13 @@ class SignupForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            [['email'], 'required'],
+            ['email', 'required'],
 
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => User::className()],
 
+            ['password', 'required'],
             ['password', PasswordValidator::className()],
 
             ['verifyCode', 'captcha'],

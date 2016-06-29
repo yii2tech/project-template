@@ -88,8 +88,8 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
                 'class' => AuthLogIdentityBehavior::className(),
                 'defaultAuthLogData' => function ($model) {
                     return [
-                        'ip' => $_SERVER['REMOTE_ADDR'],
-                        'host' => @gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                        'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null,
+                        'host' => isset($_SERVER['REMOTE_ADDR']) ? @gethostbyaddr($_SERVER['REMOTE_ADDR']) : null,
                         'url' => $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
                         'userAgent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
                     ];
