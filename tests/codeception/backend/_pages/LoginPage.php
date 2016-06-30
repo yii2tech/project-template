@@ -1,17 +1,17 @@
 <?php
 
-namespace tests\codeception\frontend\_pages;
+namespace tests\codeception\backend\_pages;
 
 use yii\codeception\BasePage;
-use app\models\frontend\LoginForm;
+use app\models\backend\LoginForm;
 
 /**
  * Represents login page
- * @property \tests\codeception\frontend\AcceptanceTester|\tests\codeception\frontend\FunctionalTester|\tests\codeception\backend\AcceptanceTester|\tests\codeception\backend\FunctionalTester $actor
+ * @property \tests\codeception\backend\AcceptanceTester|\tests\codeception\backend\FunctionalTester|\tests\codeception\backend\AcceptanceTester|\tests\codeception\backend\FunctionalTester $actor
  */
 class LoginPage extends BasePage
 {
-    public $route = 'auth/login';
+    public $route = 'site/login';
 
     /**
      * @param string $username

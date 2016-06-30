@@ -2,6 +2,7 @@
 
 namespace tests\codeception\_support;
 
+use tests\codeception\fixtures\AdminFixture;
 use tests\codeception\fixtures\UserFixture;
 use Codeception\Module;
 use yii\test\FixtureTrait;
@@ -64,6 +65,10 @@ class FixtureHelper extends Module
     public function fixtures()
     {
         return [
+            'admin' => [
+                'class' => AdminFixture::className(),
+                'dataFile' => '@tests/codeception/fixtures/data/admin.php',
+            ],
             'user' => [
                 'class' => UserFixture::className(),
                 'dataFile' => '@tests/codeception/fixtures/data/init_login.php',
