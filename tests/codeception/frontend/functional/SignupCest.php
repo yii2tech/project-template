@@ -79,6 +79,6 @@ class SignupCest
         ]);
 
         $I->expectTo('see that user logged in');
-        $I->see('Logout (tester)', 'form button[type=submit]');
+        $I->see('Logout (tester.email@example.com)', 'form button[type=submit]');
     }
 }
