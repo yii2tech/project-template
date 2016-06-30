@@ -31,7 +31,7 @@ After creating and setting up the advanced application, follow these steps to pr
    then update it by applying migrations:
 
    ```
-   codeception/bin/yii migrate
+   bin/yii migrate
    ```
 
 4. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use PHP built in

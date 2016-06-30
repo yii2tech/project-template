@@ -1,0 +1,10 @@
+include:
+  - console
+  - backend
+  - frontend
+
+paths:
+  log: _output
+
+settings:
+  colors: true

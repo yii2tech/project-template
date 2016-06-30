@@ -14,8 +14,7 @@
     "authors": [
         {
             "name": "Paul Klimov",
-            "email": "pklimov@quartsoft.com",
-            "role": "Project architect"
+            "email": "klimov.paul@gmail.com"
         }
     ],
     "minimum-stability": "dev",
