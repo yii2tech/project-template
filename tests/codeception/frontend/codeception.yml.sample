@@ -1,8 +1,8 @@
 namespace: tests\codeception\frontend
 actor: Tester
 paths:
-    tests: codeception
-    log: ../_output
+    tests: .
+    log: _output
     data: _data
     helpers: _support
 settings:
