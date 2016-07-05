@@ -122,7 +122,7 @@ defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
 $autoloadFile = $basePath . '/vendor/autoload.php';
 if (!file_exists($autoloadFile)) {
     $composerBin = file_exists($basePath . '/composer.phar') ? $basePath . '/composer.phar' : 'composer';
-    passthru('(cd ' . escapeshellarg($basePath) . "; {$composerBin} global require 'fxp/composer-asset-plugin:~1.1.1'; {$composerBin} install)");
+    passthru('(cd ' . escapeshellarg($basePath) . "; {$composerBin} global require 'fxp/composer-asset-plugin:^1.2.0'; {$composerBin} install)");
 }
 
 require($autoloadFile);
