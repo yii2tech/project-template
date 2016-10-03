@@ -15,6 +15,7 @@ return yii\helpers\ArrayHelper::merge(
             'user' => [
                 'identityClass' => 'app\models\db\User',
                 'loginUrl' => ['auth/login'],
+                'identityCookie' => ['name' => 'MyProjectIdentity', 'httpOnly' => true],
                 'enableAutoLogin' => true,
             ],
             'urlManager' => require __DIR__ . '/frontend-url-manager.php',

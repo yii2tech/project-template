@@ -15,6 +15,7 @@ return yii\helpers\ArrayHelper::merge(
             'user' => [
                 'identityClass' => 'app\models\db\Admin',
                 'idParam' => '__adminId',
+                'identityCookie' => ['name' => 'MyProjectAdminIdentity', 'httpOnly' => true],
                 'enableAutoLogin' => false,
             ],
             'urlManager' => require __DIR__ . '/backend-url-manager.php',
