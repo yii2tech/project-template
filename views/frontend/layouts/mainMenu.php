@@ -28,7 +28,7 @@ if ($webUser->isGuest) {
 } else {
     $menuItems[] = ['label' => Yii::t('menu', 'Account'), 'url' => ['/account/index']];
     $menuItems[] = '<li>'
-        . Html::beginForm(['/auth/logout'], 'post')
+        . Html::beginForm(['/auth/logout'], 'post', ['class' => 'navbar-form'])
         . Html::submitButton(
             'Logout (' . $webUser->identity->username . ')',
             ['class' => 'btn btn-link']
