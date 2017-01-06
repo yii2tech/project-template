@@ -36,6 +36,28 @@ php install.php init/all
 ```
 
 
+ASSET COMPRESSION
+-----------------
+
+For assets (CSS and JavaScript) compression use following command:
+
+```
+cd /path/to/project/root
+php yii asset config/frontend-asset-compress.php config/frontend-assets.php
+```
+
+See `config/frontend-asset-compress.php` file for more details.
+
+The 'backend' assets compression is performed as separated command:
+
+```
+cd /path/to/project/root
+php yii asset config/backend-asset-compress.php config/backend-assets.php
+```
+
+See `config/backend-asset-compress.php` file for more details.
+
+
 SELF-UPDATE
 -----------
 

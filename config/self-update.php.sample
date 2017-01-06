@@ -10,7 +10,7 @@
 return [
     // list of email addresses, which should be used to send execution reports
     'emails' => [
-        'developer@domain.com',
+        'developer@example.com',
     ],
     // Mailer component to be used
     'mailer' => 'mailer',
@@ -41,17 +41,16 @@ return [
     'beforeUpdateCommands' => [],
     // list of shell commands, which should be executed after project update
     'afterUpdateCommands' => [
-        "php {$_SERVER['SCRIPT_FILENAME']} migrate/up --interactive=0",
-        function() {
-            $fileName = Yii::getAlias('@app/assets/source/bootstrap/css') . DIRECTORY_SEPARATOR . 'bootstrap.css';
-            if (file_exists($fileName)) {
-                unlink($fileName);
-            }
-        },
+        'php ' . escapeshellarg($_SERVER['SCRIPT_FILENAME']) . ' migrate/up --interactive=0',
+        //'php ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . /install.php) . ' init/crontab --interactive=0',
+        //'php ' . escapeshellarg($_SERVER['SCRIPT_FILENAME']) . ' asset ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . '/config/frontend-asset-compress.php') . ' ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . '/config/frontend-assets.php') . ' --interactive=0',
     ],
     // adjust Composer settings, if necessary :
     /*'composerBinPath' => 'composer',
     'composerRootPaths' => [
         '@app'
     ],*/
+    // adjust report settings, if necessary :
+    //'hostName' => 'myproject.com',
+    //'reportFrom' => 'noreply@myproject.com',
 ];

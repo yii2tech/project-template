@@ -8,7 +8,6 @@ Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 return yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/main.php',
     [
-        'bootstrap' => ['gii'],
         'controllerNamespace' => 'app\controllers\console',
         'controllerMap' => [
             'self-update' => [
@@ -16,10 +15,9 @@ return yii\helpers\ArrayHelper::merge(
                 'configFile' => '@app/config/self-update.php',
             ],
         ],
-        'modules' => [
-            'gii' => [
-                'class' => 'yii\gii\Module',
-            ],
+        'components' => [
+            'urlManager' => require __DIR__ . '/frontend-url-manager.php',
+            'backendUrlManager' => require __DIR__ . '/backend-url-manager.php',
         ],
     ]
 );

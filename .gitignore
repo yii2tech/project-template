@@ -34,3 +34,14 @@ web/.htaccess
 webstub/.htaccess
 config/local.php
 config/self-update.php
+config/frontend-assets.php
+config/backend-assets.php
+
+# sitemap
+web/sitemap.xml
+web/sitemap.html
+
+# Maintenance files
+web/google*.html
+compiler.jar
+yuicompressor.jar

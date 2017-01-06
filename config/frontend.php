@@ -18,6 +18,9 @@ return yii\helpers\ArrayHelper::merge(
                 'identityCookie' => ['name' => 'MyProjectIdentity', 'httpOnly' => true],
                 'enableAutoLogin' => true,
             ],
+            'assetManager' => [
+                'bundles' => file_exists(__DIR__ . '/frontend-assets.php') ? require __DIR__ . '/frontend-assets.php' : []
+            ],
             'urlManager' => require __DIR__ . '/frontend-url-manager.php',
             'backendUrlManager' => function() {
                 /* @var $urlManager yii\web\UrlManager */

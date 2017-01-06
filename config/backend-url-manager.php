@@ -5,6 +5,8 @@
 
 return [
     'class' => 'yii\web\UrlManager',
+    'baseUrl' => isset($baseUrl) ? $baseUrl : null,
+    'hostInfo' => isset($hostInfo) ? $hostInfo : null,
     'enablePrettyUrl' => true,
     'showScriptName' => true,
     'rules' => [
