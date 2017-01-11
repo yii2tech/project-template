@@ -1,0 +1,10 @@
+# global codeception file to run tests from all apps
+include:
+    - tests/codeception/frontend
+    - tests/codeception/backend
+paths:
+    log: tests/codeception/_output
+    data: tests/codeception/_data
+#    helpers: tests/codeception/_support
+settings:
+    colors: true

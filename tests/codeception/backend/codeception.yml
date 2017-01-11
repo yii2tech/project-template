@@ -1,13 +1,15 @@
-namespace: tests\codeception\console
+namespace: tests\codeception\backend
 actor: Tester
 paths:
     tests: .
     log: _output
-    data: _data
     helpers: _support
+    data: ../_data
 settings:
     bootstrap: _bootstrap.php
-    suite_class: \PHPUnit_Framework_TestSuite
     colors: true
     memory_limit: 1024M
-    log: true
+modules:
+    config:
+        Yii2:
+            configFile: '../../../config/backend-test.php'

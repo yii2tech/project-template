@@ -3,73 +3,57 @@
 namespace tests\codeception\frontend\models;
 
 use Yii;
-use tests\codeception\frontend\unit\DbTestCase;
 use app\models\frontend\PasswordResetRequestForm;
 use tests\codeception\fixtures\UserFixture;
 use app\models\db\User;
-use Codeception\Specify;
 
-class PasswordResetRequestFormTest extends DbTestCase
+class PasswordResetRequestFormTest extends \Codeception\Test\Unit
 {
-    use Specify;
+    /**
+     * @var \tests\codeception\frontend\UnitTester
+     */
+    protected $tester;
 
-    protected function setUp()
+
+    public function _before()
     {
-        parent::setUp();
-
-        Yii::$app->mailer->fileTransportCallback = function ($mailer, $message) {
-            return 'testing_message.eml';
-        };
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserFixture::className(),
+                'dataFile' => codecept_data_dir() . 'user.php'
+            ]
+        ]);
     }
 
-    protected function tearDown()
-    {
-        if (file_exists($messageFile = $this->getMessageFile())) {
-            unlink($messageFile);
-        }
-
-        parent::tearDown();
-    }
-
-    public function testSendEmailWrongUser()
+    public function testSendMessageWithWrongEmailAddress()
     {
         $model = new PasswordResetRequestForm();
         $model->email = 'not-existing-email@example.com';
-        expect('no user with such email, message should not be sent', $model->send())->false();
+        expect_not($model->send());
+    }
+
+    public function testNotSendEmailsToInactiveUser()
+    {
+        $user = $this->tester->grabFixture('user', 1);
+        $model = new PasswordResetRequestForm();
+        $model->email = $user['email'];
+        expect_not($model->send());
+    }
+
+    public function testSendEmailSuccessfully()
+    {
+        $userFixture = $this->tester->grabFixture('user', 0);
 
         $model = new PasswordResetRequestForm();
-        $model->email = $this->user[1]['email'];
-        expect('user is not active, message should not be sent', $model->send())->false();
-    }
+        $model->email = $userFixture['email'];
+        $user = User::findOne(['passwordResetToken' => $userFixture['passwordResetToken']]);
 
-    public function testSendEmailCorrectUser()
-    {
-        $model = new PasswordResetRequestForm();
-        $model->email = $this->user[0]['email'];
-        $user = User::findOne(['passwordResetToken' => $this->user[0]['passwordResetToken']]);
+        expect_that($model->send());
+        expect_that($user->passwordResetToken);
 
-        expect('email sent', $model->send())->true();
-        expect('user has valid token', $user->passwordResetToken)->notNull();
-
-        expect('message file exists', file_exists($this->getMessageFile()))->true();
-
-        $message = file_get_contents($this->getMessageFile());
-        expect('message "from" is correct', $message)->contains(Yii::$app->params['appEmail']);
-        expect('message "to" is correct', $message)->contains($model->email);
-    }
-
-    public function fixtures()
-    {
-        return [
-            'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => '@tests/codeception/frontend/unit/fixtures/data/models/user.php'
-            ],
-        ];
-    }
-
-    private function getMessageFile()
-    {
-        return Yii::getAlias(Yii::$app->mailer->fileTransportPath) . '/testing_message.eml';
+        $emailMessage = $this->tester->grabLastSentEmail();
+        expect('valid email is sent', $emailMessage)->isInstanceOf('yii\mail\MessageInterface');
+        expect($emailMessage->getTo())->hasKey($model->email);
+        expect($emailMessage->getFrom())->hasKey(Yii::$app->params['appEmail']);
     }
 }

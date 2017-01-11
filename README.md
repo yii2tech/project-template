@@ -95,3 +95,27 @@ Translation messages generation:
 ```
 php yii message messages/config.php
 ```
+
+TESTING
+-------
+
+
+CODECEPTION TESTING
+-------------------
+
+Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+By default there are 3 test suites:
+
+- `unit`
+- `functional`
+- `acceptance`
+
+Tests can be executed by running
+
+```
+composer exec codecept run -vv
+```
+
+The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
+tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
+they perform testing in real browser.

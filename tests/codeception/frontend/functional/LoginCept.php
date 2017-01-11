@@ -2,31 +2,48 @@
 
 namespace tests\codeception\frontend\functional;
 
+use tests\codeception\fixtures\UserFixture;
 use tests\codeception\frontend\FunctionalTester;
-use tests\codeception\frontend\_pages\LoginPage;
 
-/* @var $scenario \Codeception\Scenario */
+class LoginCest
+{
+    public function _before(FunctionalTester $I)
+    {
+        $I->haveFixtures([
+            'user' => [
+                'class' => UserFixture::className(),
+                'dataFile' => codecept_data_dir() . 'login_data.php'
+            ]
+        ]);
+        $I->amOnRoute('auth/login');
+    }
 
-$I = new FunctionalTester($scenario);
-$I->wantTo('ensure login page works');
+    protected function formParams($login, $password)
+    {
+        return [
+            'LoginForm[username]' => $login,
+            'LoginForm[password]' => $password,
+        ];
+    }
 
-$loginPage = LoginPage::openBy($I);
+    public function checkEmpty(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', $this->formParams('', ''));
+        $I->seeValidationError('Username cannot be blank.');
+        $I->seeValidationError('Password cannot be blank.');
+    }
 
-$I->amGoingTo('submit login form with no data');
-$loginPage->login('', '');
-$I->expectTo('see validations errors');
-$I->see('Username cannot be blank.', '.help-block');
-$I->see('Password cannot be blank.', '.help-block');
+    public function checkWrongPassword(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
+        $I->seeValidationError('Incorrect username or password.');
+    }
 
-$I->amGoingTo('try to login with wrong credentials');
-$I->expectTo('see validations errors');
-$loginPage->login('admin', 'wrong');
-$I->expectTo('see validations errors');
-$I->see('Incorrect username or password.', '.help-block');
-
-$I->amGoingTo('try to login with correct credentials');
-$loginPage->login('erau', 'password_0');
-$I->expectTo('see that user is logged');
-$I->see('Logout (erau)', 'form button[type=submit]');
-$I->dontSeeLink('Login');
-$I->dontSeeLink('Signup');
+    public function checkValidLogin(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', $this->formParams('erau', 'password_0'));
+        $I->see('Logout (erau)', 'form button[type=submit]');
+        $I->dontSeeLink('Login');
+        $I->dontSeeLink('Signup');
+    }
+}

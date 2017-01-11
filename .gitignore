@@ -26,9 +26,7 @@ phpunit.phar
 
 # local project files
 /phpunit.xml
-tests/codeception/backend/codeception.yml
 tests/codeception/backend/acceptance.suite.yml
-tests/codeception/frontend/codeception.yml
 tests/codeception/frontend/acceptance.suite.yml
 web/.htaccess
 webstub/.htaccess
