@@ -49,6 +49,6 @@ class SignupCest
             'email' => 'tester.email@example.com',
         ]);
 
-        $I->see('Logout (tester)', 'form button[type=submit]');
+        $I->see('Logout (tester.email@example.com)', 'form button[type=submit]');
     }
 }
