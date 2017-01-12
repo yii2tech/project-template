@@ -1,61 +1,120 @@
-This directory contains various tests for the advanced applications.
+Codeception Testing
+===================
 
-Tests in `codeception` directory are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+This project uses Codeception as a test framework.
+There are already some sample tests prepared in `tests` directory of `frontend` and `backend`.
+In order for the following procedure to work, it is assumed that the application has been initialized using
+the `dev` environment.
+Tests require an **additional database**, which will be cleaned up between tests.
+Create database e.g. `myproject_test` in mysql (according to config in `config/local.php`).
+You should ensure testing database is applied at local configuration file. Following configuration code
+may provide this:
 
-After creating and setting up the advanced application, follow these steps to prepare for the tests:
+```php
+// file `config/local.php`
 
-1. Install Codeception if it's not yet installed:
+$config = [
+    'components' => [
+        'db' => [
+            'dsn' => 'mysql:host=127.0.0.1;dbname=myproject' . (YII_ENV === 'test' ? '_test' : ''),
+            // ...
+        ],
+        // ...
+    ],
+];
+
+// ...
+
+return $config;
+```
+
+You will need to apply migrations for the test database. This can be performed executing following command:
+
+```
+php tests/codeception/yii migrate
+```
+
+Then all sample tests can be started by running:
+
+```
+composer exec 'codecept run' -vv
+```
+
+It is recommended to keep your tests up to date. If a class, or functionality is deleted, corresponding tests should be deleted as well.
+You should run tests regularly, or better to set up Continuous Integration server for them.
+
+Please refer to [Yii2 Framework Case Study](http://codeception.com/for/yii) to learn how to configure Codeception for your application.
+
+
+### Frontend
+
+Frontend tests contain unit tests, functional tests, and acceptance tests.
+Execute them by running:
+
+```
+composer exec 'codecept run -- -c tests/codeception/frontend' -vv
+```
+
+Description of test suites:
+
+* `unit` - classes related to frontend application only.
+* `functional` - application internal requests/responses (without a web server).
+* `acceptance` - web application, user interface and javascript interactions in real browser.
+
+By default acceptance tests are not supported, to run them use:
+
+#### Running Acceptance Tests
+
+To execute acceptance tests do the following:
+
+1. Rename `tests/codeception/frontend/acceptance.suite.yml.example` to `tests/codeception/frontend/acceptance.suite.yml` to enable suite configuration
+
+2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
+   version of Codeception
+
+3. Update dependencies with Composer
+
+    ```
+    composer update
+    ```
+
+4. Auto-generate new support classes for acceptance tests:
+
+    ```
+    composer exec 'codecept build -- -c tests/codeception/frontend' -vv
+    ```
+
+5. Download [Selenium Server](http://www.seleniumhq.org/download/) and launch it:
+
+    ```
+    java -jar ~/selenium-server-standalone-x.xx.x.jar
+    ```
+
+6. Start web server:
+
+    ```
+    php -S 127.0.0.1:8080 -t frontend/web
+    ```
+
+7. Now you can run all available tests
 
    ```
-   composer global require "codeception/codeception=2.1.*" "codeception/specify=*" "codeception/verify=*"
+   composer exec 'codecept run acceptance -- -c tests/codeception/frontend' -vv
    ```
 
-   If you've never used Composer for global packages run `composer global status`. It should output:
+You can always skip acceptance tests from run using following command:
 
-   ```
-   Changed current directory to <directory>
-   ```
+```
+composer exec 'codecept run -s acceptance' -vv
+```
 
-   Then add `<directory>/vendor/bin` to you `PATH` environment variable. Now you're able to use `codecept` from command
-   line globally.
-   In CentOS each user has a file called .bashrc in his home directory (`~/.bashrc`). Add the command `PATH=/home/USERNAME/.composer/vendor/bin:$PATH`
-   into it to update the `PATH` variable. Note: you'll have to re-login n order for this changes to be applied.
 
-2. Install faker extension by running the following from template root directory where `composer.json` is:
+## Backend
 
-   ```
-   composer require --dev yiisoft/yii2-faker:*
-   ```
+Backend application contain unit and functional test suites. Execute them by running:
 
-3. Create a database for tests, adjust the `components['db']` configuration in `tests/codeception/config/config-local.php`,
-   then update it by applying migrations:
+```
+composer exec 'codecept run -- -c tests/codeception/backend' -vv
+```
 
-   ```
-   bin/yii migrate
-   ```
-
-4. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use PHP built in
-   webserver. In the root directory where `common`, `frontend` etc. are execute the following:
-
-   ```
-   php -S localhost:8080
-   ```
-
-5. Now you can run the tests with the following commands, assuming you are in the `tests/codeception` directory:
-
-   ```
-   # frontend tests
-   cd frontend
-   codecept build
-   codecept run
-
-   # backend tests
-
-   cd backend
-   codecept build
-   codecept run
-
-   # etc.
-   ```
-
-   If you already have run `codecept build` for each application, you can skip that step and run all tests by a single `codecept run`.
+Setup of the acceptance tests for backend is similar to the one used at frontend.

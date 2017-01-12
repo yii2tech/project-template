@@ -20,8 +20,6 @@ install:
   - travis_retry composer global require "fxp/composer-asset-plugin:^1.2.0"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install --dev --prefer-dist --no-interaction
-# codeception
-  - travis_retry composer global require "codeception/codeception=2.1.*" "codeception/specify=*" "codeception/verify=*"
 # setup database:
   - mysql -e 'CREATE DATABASE yii2test;';
 # setup application:
@@ -39,7 +37,5 @@ before_script:
 
 script:
   - |
-    cd web
-    php -S localhost:8080 > /dev/null 2>&1 &
-    cd ../tests/codeception
-    codecept run
+    php -S localhost:8080 -t web > /dev/null 2>&1 &
+        composer exec 'codecept run -s acceptance' -vv

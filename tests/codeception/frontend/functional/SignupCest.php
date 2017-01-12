@@ -2,83 +2,53 @@
 
 namespace tests\codeception\frontend\functional;
 
-use tests\codeception\frontend\_pages\SignupPage;
-use common\models\User;
+use app\models\db\User;
+use tests\codeception\frontend\FunctionalTester;
 
 class SignupCest
 {
+    protected $formId = '#form-signup';
 
-    /**
-     * This method is called before each cest class test method
-     * @param \tests\codeception\frontend\FunctionalTester $I
-     */
-    public function _before($I)
+
+    public function _before(FunctionalTester $I)
     {
+        $I->amOnRoute('signup/index');
     }
 
-    /**
-     * This method is called after each cest class test method, even if test failed.
-     * @param \tests\codeception\frontend\FunctionalTester $I
-     */
-    public function _after($I)
+    public function signupWithEmptyFields(FunctionalTester $I)
     {
-        //reload default fixtures
-        $I->loadFixtures();
-    }
-
-    /**
-     * This method is called when test fails.
-     * @param \tests\codeception\frontend\FunctionalTester $I
-     */
-    public function _failed($I)
-    {
-
-    }
-
-    /**
-     *
-     * @param \tests\codeception\frontend\FunctionalTester $I
-     * @param \Codeception\Scenario $scenario
-     */
-    public function testUserSignup($I, $scenario)
-    {
-        $I->wantTo('ensure that signup works');
-
-        $signupPage = SignupPage::openBy($I);
         $I->see('Signup', 'h1');
         $I->see('Please fill out the following fields to signup:');
+        $I->submitForm($this->formId, []);
+        $I->seeValidationError('Email cannot be blank.');
+        $I->seeValidationError('Password cannot be blank.');
 
-        $I->amGoingTo('submit signup form with no data');
+    }
 
-        $signupPage->submit([]);
-
-        $I->expectTo('see validation errors');
-        $I->see('Email cannot be blank.', '.help-block');
-        $I->see('Password cannot be blank.', '.help-block');
-
-        $I->amGoingTo('submit signup form with not correct email');
-        $signupPage->submit([
-            'email' => 'tester.email',
-            'password' => 'tester_password',
-        ]);
-
-        $I->expectTo('see that email address is wrong');
+    public function signupWithWrongEmail(FunctionalTester $I)
+    {
+        $I->submitForm(
+            $this->formId, [
+                'SignupForm[email]'     => 'ttttt',
+                'SignupForm[password]'  => 'tester_password',
+            ]
+        );
         $I->dontSee('Password cannot be blank.', '.help-block');
         $I->see('Email is not a valid email address.', '.help-block');
+    }
 
-        $I->amGoingTo('submit signup form with correct email');
-        $signupPage->submit([
-            'email' => 'tester.email@example.com',
-            'password' => 'TesterPassword1',
-            'verifyCode' => 'testme',
+    public function signupSuccessfully(FunctionalTester $I)
+    {
+        $I->submitForm($this->formId, [
+            'SignupForm[email]' => 'tester.email@example.com',
+            'SignupForm[password]' => 'TesterPassword1',
+            'SignupForm[verifyCode]' => 'testme',
         ]);
 
-        $I->expectTo('see that user is created');
-        $I->seeRecord('app\models\db\User', [
+        $I->seeRecord(User::className(), [
             'email' => 'tester.email@example.com',
         ]);
 
-        $I->expectTo('see that user logged in');
         $I->see('Logout (tester.email@example.com)', 'form button[type=submit]');
     }
 }

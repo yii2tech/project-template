@@ -33,10 +33,11 @@
         "yii2tech/selfupdate": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1"
     },
     "config": {
         "process-timeout": 1800

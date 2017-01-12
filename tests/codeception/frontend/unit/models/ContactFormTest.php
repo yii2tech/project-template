@@ -1,32 +1,18 @@
 <?php
 
-namespace tests\codeception\frontend\unit\models;
+namespace tests\codeception\frontend\models;
 
 use Yii;
-use tests\codeception\frontend\unit\TestCase;
 use app\models\frontend\ContactForm;
 
-class ContactFormTest extends TestCase
+/**
+ * ContactFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
+class ContactFormTest extends \Codeception\Test\Unit
 {
-    use \Codeception\Specify;
-
-    protected function setUp()
-    {
-        parent::setUp();
-        Yii::$app->mailer->fileTransportCallback = function ($mailer, $message) {
-            return 'testing_message.eml';
-        };
-    }
-
-    protected function tearDown()
-    {
-        if (file_exists($messageFile = $this->getMessageFile())) {
-            unlink($messageFile);
-        }
-        parent::tearDown();
-    }
-
-    public function testContact()
+    public function testSendEmail()
     {
         $model = new ContactForm();
 
@@ -38,24 +24,18 @@ class ContactFormTest extends TestCase
             'verifyCode' => 'testme',
         ];
 
-        expect('no validation errors', $model->send())->true();
+        expect_that($model->send());
 
-        $this->specify('email should be send', function () {
-            expect('email file should exist', file_exists($this->getMessageFile()))->true();
-        });
+        // using Yii2 module actions to check email was sent
+        $this->tester->seeEmailIsSent();
 
-        $this->specify('message should contain correct data', function () use ($model) {
-            $emailMessage = file_get_contents($this->getMessageFile());
-
-            expect('email should contain user name', $emailMessage)->contains($model->name);
-            expect('email should contain sender email', $emailMessage)->contains($model->email);
-            expect('email should contain subject', $emailMessage)->contains($model->subject);
-            expect('email should contain body', $emailMessage)->contains($model->body);
-        });
-    }
-
-    private function getMessageFile()
-    {
-        return Yii::getAlias(Yii::$app->mailer->fileTransportPath) . '/testing_message.eml';
+        $emailMessage = $this->tester->grabLastSentEmail();
+        expect('valid email is sent', $emailMessage)->isInstanceOf('yii\mail\MessageInterface');
+        //expect($emailMessage->getTo())->hasKey('admin@example.com');
+        //expect($emailMessage->getFrom())->hasKey('tester@example.com');
+        expect($emailMessage->getSubject())->contains('very important letter subject');
+        expect($emailMessage->toString())->contains('body of current message');
+        expect($emailMessage->toString())->contains('Tester');
+        expect($emailMessage->toString())->contains('tester@example.com');
     }
 }

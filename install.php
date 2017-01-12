@@ -51,9 +51,7 @@ $config = [
                 '@app/webstub/.htaccess',
                 '@app/config/local.php',
                 '@app/config/self-update.php',
-                '@app/tests/codeception/backend/codeception.yml',
                 '@app/tests/codeception/backend/acceptance.suite.yml',
-                '@app/tests/codeception/frontend/codeception.yml',
                 '@app/tests/codeception/frontend/acceptance.suite.yml',
             ],
             'localFilePlaceholders' => [

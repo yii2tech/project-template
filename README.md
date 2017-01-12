@@ -95,3 +95,13 @@ Translation messages generation:
 ```
 php yii message messages/config.php
 ```
+
+TESTING
+-------
+
+This project supports testing via [PHPUnit](https://phpunit.de/) as well as via [Codeception](http://codeception.com)
+
+Regular PHPUnit tests are located under 'tests\unit' directory. In case you have PHPUnit installed you can run them
+using `phpunit` command from the project root.
+
+Please refer to [Codeception Testing](tests/codeception/README.md) manual for the details about Codeception tests setup and running.

@@ -1,15 +1,26 @@
 <?php
 
-namespace tests\codeception\frontend\unit\models;
+namespace tests\codeception\frontend\models;
 
-use tests\codeception\frontend\unit\DbTestCase;
 use tests\codeception\fixtures\UserFixture;
-use Codeception\Specify;
 use app\models\frontend\SignupForm;
 
-class SignupFormTest extends DbTestCase
+/**
+ * SignupFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
+class SignupFormTest extends \Codeception\Test\Unit
 {
-    use Specify;
+    public function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserFixture::className(),
+                'dataFile' => codecept_data_dir() . 'user.php'
+            ]
+        ]);
+    }
 
     public function testCorrectSignup()
     {
@@ -23,9 +34,9 @@ class SignupFormTest extends DbTestCase
 
         $this->assertInstanceOf('app\models\db\User', $user, 'user should be valid');
 
-        //expect('username should be correct', $user->username)->equals('some_username');
-        expect('email should be correct', $user->email)->equals('some_email@example.com');
-        expect('password should be correct', $user->validatePassword('SomePassword1'))->true();
+        //expect($user->username)->equals('some_username');
+        expect($user->email)->equals('some_email@example.com');
+        expect($user->validatePassword('SomePassword1'))->true();
     }
 
     public function testNotCorrectSignup()
@@ -36,16 +47,10 @@ class SignupFormTest extends DbTestCase
             'verifyCode' => 'testme',
         ]);
 
-        expect('username and email are in use, user should not be created', $model->signup())->null();
-    }
+        expect_not($model->signup());
+        expect_that($model->getErrors('email'));
 
-    public function fixtures()
-    {
-        return [
-            'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => '@tests/codeception/frontend/unit/fixtures/data/models/user.php',
-            ],
-        ];
+        expect($model->getFirstError('email'))
+            ->equals('Email "nicolas.dianna@hotmail.com" has already been taken.');
     }
 }
