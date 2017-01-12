@@ -47,6 +47,7 @@ $config = [
         ],*/
         'db' => [
             'dsn' => 'mysql:host={{dbHost}};dbname={{dbName}}',
+            //'dsn' => 'mysql:host={{dbHost}};dbname={{dbName}}' . (YII_ENV === 'test' ? '_test' : ''),
             'username' => '{{dbUser}}',
             'password' => '{{dbPassword}}',
         ],

@@ -99,23 +99,9 @@ php yii message messages/config.php
 TESTING
 -------
 
+This project supports testing via [PHPUnit](https://phpunit.de/) as well as via [Codeception](http://codeception.com)
 
-CODECEPTION TESTING
--------------------
+Regular PHPUnit tests are located under 'tests\unit' directory. In case you have PHPUnit installed you can run them
+using `phpunit` command from the project root.
 
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
-By default there are 3 test suites:
-
-- `unit`
-- `functional`
-- `acceptance`
-
-Tests can be executed by running
-
-```
-composer exec codecept run -vv
-```
-
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
-they perform testing in real browser.
+Please refer to [Codeception Testing](tests/codeception/README.md) manual for the details about Codeception tests setup and running.
