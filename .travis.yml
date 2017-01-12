@@ -40,4 +40,4 @@ before_script:
 script:
   - |
     php -S localhost:8080 -t web > /dev/null 2>&1 &
-        composer exec codecept run -vv
+        composer exec 'codecept run -s acceptance' -vv
