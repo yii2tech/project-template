@@ -35,6 +35,12 @@ INSTALLATION
 php install.php init/all
 ```
 
+Project should be deployed beyond web accessible folder. Actual web root should be created as symlink to the 'web' folder:
+
+```bash
+ln -s /path/to/project/web /var/www/html/project
+```
+
 
 ASSET COMPRESSION
 -----------------
@@ -95,6 +101,7 @@ Translation messages generation:
 ```
 php yii message messages/config.php
 ```
+
 
 TESTING
 -------
