@@ -7,14 +7,13 @@ use app\models\frontend\PasswordResetRequestForm;
 use tests\codeception\fixtures\UserFixture;
 use app\models\db\User;
 
+/**
+ * PasswordResetRequestFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
 class PasswordResetRequestFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \tests\codeception\frontend\UnitTester
-     */
-    protected $tester;
-
-
     public function _before()
     {
         $this->tester->haveFixtures([

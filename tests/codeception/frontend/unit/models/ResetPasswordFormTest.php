@@ -5,14 +5,13 @@ namespace tests\codeception\frontend\models;
 use tests\codeception\fixtures\UserFixture;
 use app\models\frontend\ResetPasswordForm;
 
+/**
+ * ResetPasswordFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
 class ResetPasswordFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \tests\codeception\frontend\UnitTester
-     */
-    protected $tester;
-
-
     public function _before()
     {
         $this->tester->haveFixtures([

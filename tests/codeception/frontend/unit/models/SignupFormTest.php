@@ -3,17 +3,15 @@
 namespace tests\codeception\frontend\models;
 
 use tests\codeception\fixtures\UserFixture;
-use Codeception\Specify;
 use app\models\frontend\SignupForm;
 
+/**
+ * SignupFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
 class SignupFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \tests\codeception\frontend\UnitTester
-     */
-    protected $tester;
-
-
     public function _before()
     {
         $this->tester->haveFixtures([

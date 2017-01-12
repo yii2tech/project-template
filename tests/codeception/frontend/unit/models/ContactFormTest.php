@@ -5,13 +5,13 @@ namespace tests\codeception\frontend\models;
 use Yii;
 use app\models\frontend\ContactForm;
 
+/**
+ * ContactFormTest
+ *
+ * @property \tests\codeception\frontend\UnitTester $tester
+ */
 class ContactFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \tests\codeception\frontend\UnitTester
-     */
-    protected $tester;
-
     public function testSendEmail()
     {
         $model = new ContactForm();
