@@ -10,6 +10,13 @@ return yii\helpers\ArrayHelper::merge(
     [
         'controllerNamespace' => 'app\controllers\console',
         'controllerMap' => [
+            'migrate' => [
+                'class' => 'yii\console\controllers\MigrateController',
+                'migrationNamespaces' => [
+                    'app\migrations',
+                ],
+                'migrationPath' => null,
+            ],
             'self-update' => [
                 'class' => 'yii2tech\selfupdate\SelfUpdateController',
                 'configFile' => '@app/config/self-update.php',

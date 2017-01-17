@@ -1,8 +1,10 @@
 <?php
 
+namespace app\migrations;
+
 use yii\db\Migration;
 
-class m160527_132600_create_app_config extends Migration
+class M160527132600CreateAppConfig extends Migration
 {
     /**
      * @inheritdoc

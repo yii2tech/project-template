@@ -1,8 +1,11 @@
 <?php
 
+namespace app\migrations;
+
+use Yii;
 use yii\db\Migration;
 
-class m160224_080316_init extends Migration
+class M160224080316Init extends Migration
 {
     public function up()
     {

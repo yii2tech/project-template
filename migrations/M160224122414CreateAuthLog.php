@@ -1,8 +1,10 @@
 <?php
 
+namespace app\migrations;
+
 use yii\db\Migration;
 
-class m160224_122414_create_auth_log extends Migration
+class M160224122414CreateAuthLog extends Migration
 {
     public function up()
     {
