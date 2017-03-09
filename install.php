@@ -37,10 +37,12 @@ $config = [
             'class' => 'yii2tech\install\InitController',
             'localDirectories' => [
                 '@app/web/assets',
+                '@app/web/sitemap',
                 '@runtime',
             ],
             'tmpDirectories' => [
                 '@app/web/assets',
+                '@app/web/sitemap',
                 '@runtime/URI',
                 '@runtime/HTML',
                 '@runtime/debug',
@@ -96,7 +98,8 @@ $config = [
                 ],
             ],
             'commands' => [
-                "php {$basePath}/yii migrate/up --interactive=0"
+                'php ' . escapeshellarg($basePath . '/yii') . ' migrate/up --interactive=0',
+                'php ' . escapeshellarg($basePath . '/yii') . ' sitemap/generate --interactive=0',
             ],
             // Cron jobs :
             /*'cronTab' => [

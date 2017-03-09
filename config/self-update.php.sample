@@ -42,6 +42,7 @@ return [
     // list of shell commands, which should be executed after project update
     'afterUpdateCommands' => [
         'php ' . escapeshellarg($_SERVER['SCRIPT_FILENAME']) . ' migrate/up --interactive=0',
+        'php ' . escapeshellarg($_SERVER['SCRIPT_FILENAME']) . ' sitemap/generate --interactive=0',
         //'php ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . /install.php) . ' init/crontab --interactive=0',
         //'php ' . escapeshellarg($_SERVER['SCRIPT_FILENAME']) . ' asset ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . '/config/frontend-asset-compress.php') . ' ' . escapeshellarg(dirname($_SERVER['SCRIPT_FILENAME']) . '/config/frontend-assets.php') . ' --interactive=0',
     ],

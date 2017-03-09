@@ -17,6 +17,15 @@ $rows = [
             'class' => 'btn btn-primary',
         ],
     ],
+    [
+        'title' => Yii::t('admin-content', 'Generate Sitemap'),
+        'description' => Yii::t('admin-content', 'Generates sitemap (regenerates if exists), applying recent changes to it.'),
+        'url' => ['generate-sitemap'],
+        'icon' => 'align-left',
+        'options' => [
+            'class' => 'btn btn-primary',
+        ],
+    ],
 ];
 ?>
 <div class="row">

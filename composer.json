@@ -30,7 +30,8 @@
         "yii2tech/config": "*",
         "yii2tech/install": "*",
         "yii2tech/filedb": "*",
-        "yii2tech/selfupdate": "*"
+        "yii2tech/selfupdate": "*",
+        "yii2tech/sitemap": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

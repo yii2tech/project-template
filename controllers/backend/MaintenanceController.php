@@ -50,4 +50,17 @@ class MaintenanceController extends Controller
     {
         return $this->render('index');
     }
+
+    /**
+     * Triggers sitemap generation as background process.
+     */
+    public function actionGenerateSitemap()
+    {
+        $scriptFile = escapeshellarg(Yii::getAlias('@app/yii'));
+        exec("php {$scriptFile} sitemap/generate >/dev/null 2>&1 &");
+
+        Yii::$app->session->setFlash('success', Yii::t('admin-content', 'Sitemap generation started. It may take some time to be complete.'));
+
+        return $this->redirect(['index']);
+    }
 }
