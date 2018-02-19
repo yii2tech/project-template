@@ -12,6 +12,10 @@ return yii\helpers\ArrayHelper::merge(
             'log',
             'configManager',
         ],
+        'aliases' => [
+            '@bower' => '@vendor/bower-asset',
+            '@npm'   => '@vendor/npm-asset',
+        ],
         'components' => [
             'cache' => [
                 'class' => 'yii\caching\FileCache',
