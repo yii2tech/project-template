@@ -40,6 +40,12 @@
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "config": {
         "process-timeout": 1800
     },
