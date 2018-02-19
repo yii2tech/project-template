@@ -45,7 +45,7 @@ class SignupCest
             'SignupForm[verifyCode]' => 'testme',
         ]);
 
-        $I->seeRecord(User::className(), [
+        $I->seeRecord(User::class, [
             'email' => 'tester.email@example.com',
         ]);
 

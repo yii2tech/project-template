@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = Yii::t('auth', 'Login');
             <?php endif; ?>
 
             <?php if ($model->isVerifyRobotRequired) : ?>
-                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
                     'template' => '{image}{input}',
                 ]) ?>
             <?php endif; ?>

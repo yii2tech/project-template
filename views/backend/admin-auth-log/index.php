@@ -78,7 +78,7 @@ $authErrorLabels = $searchModel->authErrorLabels();
             'visible' => !$controller->isContextActive('admin')
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{view}',
         ],
     ],

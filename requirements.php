@@ -50,6 +50,13 @@ if (extension_loaded('gd')) {
  * Requirements list :
  */
 $requirements = array(
+    array(
+        'name' => 'PHP version',
+        'mandatory' => true,
+        'condition' => version_compare(PHP_VERSION, '5.6.0', '>='),
+        'by' => 'Base application code',
+        'memo' => 'PHP 5.6.0 or higher is required.',
+    ),
     // Database :
     array(
         'name' => 'PDO extension',

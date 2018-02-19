@@ -13,7 +13,7 @@ use app\models\db\Admin;
 class AdminSearch extends Admin
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -24,7 +24,7 @@ class AdminSearch extends Admin
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {

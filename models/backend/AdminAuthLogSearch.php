@@ -13,17 +13,17 @@ class AdminAuthLogSearch extends AuthLogSearch
     public $adminId;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $userReferenceAttribute = 'adminId';
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $userClass = 'app\models\db\Admin';
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function createQuery()
     {

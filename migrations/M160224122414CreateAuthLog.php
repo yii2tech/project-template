@@ -6,6 +6,9 @@ use yii\db\Migration;
 
 class M160224122414CreateAuthLog extends Migration
 {
+    /**
+     * {@inheritdoc}
+     */
     public function up()
     {
         $tableOptions = null;
@@ -34,6 +37,9 @@ class M160224122414CreateAuthLog extends Migration
         $this->addForeignKey("fk_{$table}_adminId", $table, 'adminId', 'Admin', 'id', 'CASCADE', 'CASCADE');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function down()
     {
         $this->dropTable('AdminAuthLog');

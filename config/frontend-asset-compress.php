@@ -44,19 +44,19 @@ return [
     // The list of asset bundles to compress:
     'bundles' => [
         // base :
-        'yii\web\YiiAsset',
-        'yii\web\JqueryAsset',
-        'yii\validators\ValidationAsset',
+        yii\web\YiiAsset::class,
+        yii\web\JqueryAsset::class,
+        yii\validators\ValidationAsset::class,
         // application :
-        'app\assets\FrontendAsset',
+        app\assets\FrontendAsset::class,
         // widgets :
-        'yii\widgets\ActiveFormAsset',
-        //'yii\grid\GridViewAsset',
+        yii\widgets\ActiveFormAsset::class,
+        //yii\grid\GridViewAsset::class,
     ],
     // Asset bundle for compression output:
     'targets' => [
         'all' => [
-            'class' => 'yii\web\AssetBundle',
+            'class' => yii\web\AssetBundle::class,
             'basePath' => '@webroot/assets',
             'baseUrl' => '@web/assets',
             'js' => 'all-{hash}.js',

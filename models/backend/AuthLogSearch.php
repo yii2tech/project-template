@@ -41,7 +41,7 @@ abstract class AuthLogSearch extends Model
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -54,7 +54,7 @@ abstract class AuthLogSearch extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

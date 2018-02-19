@@ -13,13 +13,13 @@ use yii2tech\admin\behaviors\ContextModelControlBehavior;
 class AdminAuthLogController extends CrudController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $modelClass = 'app\models\db\AdminAuthLog';
+    public $modelClass = \app\models\db\AdminAuthLog::class;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $searchModelClass = 'app\models\backend\AdminAuthLogSearch';
+    public $searchModelClass = \app\models\backend\AdminAuthLogSearch::class;
     /**
      * Contexts configuration
      * @see ContextModelControlBehavior::contexts
@@ -27,7 +27,7 @@ class AdminAuthLogController extends CrudController
     public $contexts = [
         // Specify actual contexts :
         'admin' => [
-            'class' => 'app\models\db\Admin',
+            'class' => \app\models\db\Admin::class,
             'attribute' => 'adminId',
             'controller' => 'admin',
             'required' => false,
@@ -36,7 +36,7 @@ class AdminAuthLogController extends CrudController
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -44,7 +44,7 @@ class AdminAuthLogController extends CrudController
             parent::behaviors(),
             [
                 'model' => [
-                    'class' => ContextModelControlBehavior::className(),
+                    'class' => ContextModelControlBehavior::class,
                     'contexts' => $this->contexts
                 ]
             ]
@@ -52,7 +52,7 @@ class AdminAuthLogController extends CrudController
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {

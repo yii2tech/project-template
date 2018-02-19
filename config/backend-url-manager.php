@@ -4,7 +4,7 @@
  */
 
 return [
-    'class' => 'yii\web\UrlManager',
+    'class' => yii\web\UrlManager::class,
     'baseUrl' => isset($baseUrl) ? $baseUrl : null,
     'hostInfo' => isset($hostInfo) ? $hostInfo : null,
     'enablePrettyUrl' => true,

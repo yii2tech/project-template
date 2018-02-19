@@ -13,7 +13,7 @@ return yii\helpers\ArrayHelper::merge(
                 'name' => 'MyProjectAdminSession'
             ],
             'user' => [
-                'identityClass' => 'app\models\db\Admin',
+                'identityClass' => app\models\db\Admin::class,
                 'idParam' => '__adminId',
                 'identityCookie' => ['name' => 'MyProjectAdminIdentity', 'httpOnly' => true],
                 'enableAutoLogin' => false,

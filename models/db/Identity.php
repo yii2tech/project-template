@@ -20,28 +20,28 @@ use yii2tech\authlog\AuthLogIdentityBehavior;
 /**
  * Identity is a base class for identity models.
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
  * @property string $passwordHash
  * @property string $passwordResetToken
  * @property string $email
  * @property string $authKey
- * @property integer $statusId
- * @property integer $createdAt
- * @property integer $updatedAt
+ * @property int $statusId
+ * @property int $createdAt
+ * @property int $updatedAt
  *
- * @property boolean $isActive whether identity is active
- * @property boolean $isDeleted whether identity is marked as deleted
- * @property boolean $isSuspended whether identity is suspended
+ * @property bool $isActive whether identity is active
+ * @property bool $isDeleted whether identity is marked as deleted
+ * @property bool $isSuspended whether identity is suspended
  *
  * @property IdentityStatus $status
  *
- * @property integer $lastLoginDate
- * @property integer $preLastLoginDate
+ * @property int $lastLoginDate
+ * @property int $preLastLoginDate
  *
- * @method integer|boolean softDelete()
- * @method integer|boolean safeDelete()
- * @method integer|boolean restore()
+ * @method int|bool softDelete()
+ * @method int|bool safeDelete()
+ * @method int|bool restore()
  *
  * @author Paul Klimov <pklimov@quartsoft.com>
  * @package app\models\db
@@ -58,19 +58,20 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
      */
     public $password;
 
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
             ],
             'softDelete' => [
-                'class' => SoftDeleteBehavior::className(),
+                'class' => SoftDeleteBehavior::class,
                 'softDeleteAttributeValues' => [
                     'statusId' => self::STATUS_DELETED,
                     'updatedAt' => function () {
@@ -85,7 +86,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
                 ],
             ],
             'authLog' => [
-                'class' => AuthLogIdentityBehavior::className(),
+                'class' => AuthLogIdentityBehavior::class,
                 'defaultAuthLogData' => function ($model) {
                     return [
                         'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null,
@@ -99,7 +100,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -108,7 +109,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
             ['email', 'required'],
             ['username', 'required', 'except' => 'create'],
             ['password', 'required', 'on' => 'create'],
-            ['password', PasswordValidator::className()],
+            ['password', PasswordValidator::class],
             ['email', 'email'],
             ['statusId', 'default', 'value' => self::STATUS_PENDING],
             ['statusId', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_PENDING, self::STATUS_DELETED]],
@@ -116,7 +117,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -131,7 +132,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function beforeSave($insert)
     {
@@ -158,7 +159,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return IdentityQuery the active query used by this AR class.
      */
     public static function find()
@@ -169,7 +170,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     // Identity Logic :
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentity($id)
     {
@@ -177,7 +178,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -217,7 +218,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
      * Finds out if password reset token is valid
      *
      * @param string $token password reset token
-     * @return boolean
+     * @return bool
      */
     public static function isPasswordResetTokenValid($token)
     {
@@ -231,7 +232,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -239,7 +240,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAuthKey()
     {
@@ -247,7 +248,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validateAuthKey($authKey)
     {
@@ -258,7 +259,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
      * Validates password
      *
      * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
+     * @return bool whether password provided is valid for current user
      */
     public function validatePassword($password)
     {
@@ -290,7 +291,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return boolean whether identity is active
+     * @return bool whether identity is active
      */
     public function getIsActive()
     {
@@ -298,7 +299,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return boolean whether identity is marked as deleted
+     * @return bool whether identity is marked as deleted
      */
     public function getIsDeleted()
     {
@@ -306,7 +307,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return boolean whether identity is suspended
+     * @return bool whether identity is suspended
      */
     public function getIsSuspended()
     {
@@ -329,7 +330,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
      */
     public function getStatus()
     {
-        return $this->hasOne(IdentityStatus::className(), ['id' => 'statusId']);
+        return $this->hasOne(IdentityStatus::class, ['id' => 'statusId']);
     }
 
     // Logic :

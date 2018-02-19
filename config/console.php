@@ -11,14 +11,14 @@ return yii\helpers\ArrayHelper::merge(
         'controllerNamespace' => 'app\controllers\console',
         'controllerMap' => [
             'migrate' => [
-                'class' => 'yii\console\controllers\MigrateController',
+                'class' => yii\console\controllers\MigrateController::class,
                 'migrationNamespaces' => [
                     'app\migrations',
                 ],
                 'migrationPath' => null,
             ],
             'self-update' => [
-                'class' => 'yii2tech\selfupdate\SelfUpdateController',
+                'class' => yii2tech\selfupdate\SelfUpdateController::class,
                 'configFile' => '@app/config/self-update.php',
             ],
         ],

@@ -13,17 +13,17 @@ use yii2tech\admin\behaviors\ContextModelControlBehavior;
 class UserController extends CrudController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $modelClass = 'app\models\db\User';
+    public $modelClass = \app\models\db\User::class;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $searchModelClass = 'app\models\backend\UserSearch';
+    public $searchModelClass = \app\models\backend\UserSearch::class;
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -33,11 +33,11 @@ class UserController extends CrudController
 
         return ArrayHelper::merge($actions, [
             'suspend' => [
-                'class' => 'yii2tech\admin\actions\Callback',
+                'class' => \yii2tech\admin\actions\Callback::class,
                 'callback' => 'suspend'
             ],
             'activate' => [
-                'class' => 'yii2tech\admin\actions\Callback',
+                'class' => \yii2tech\admin\actions\Callback::class,
                 'callback' => 'activate'
             ],
         ]);

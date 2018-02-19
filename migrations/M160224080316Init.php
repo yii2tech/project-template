@@ -7,6 +7,9 @@ use yii\db\Migration;
 
 class M160224080316Init extends Migration
 {
+    /**
+     * {@inheritdoc}
+     */
     public function up()
     {
         $tableOptions = null;
@@ -51,6 +54,9 @@ class M160224080316Init extends Migration
         $this->createIndex("idx_{$table}_statusId", $table, 'statusId');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function down()
     {
         $this->dropTable('User');

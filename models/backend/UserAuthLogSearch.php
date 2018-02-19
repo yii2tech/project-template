@@ -13,17 +13,17 @@ class UserAuthLogSearch extends AuthLogSearch
     public $userId;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $userReferenceAttribute = 'userId';
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $userClass = 'app\models\db\User';
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function createQuery()
     {

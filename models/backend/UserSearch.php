@@ -22,7 +22,7 @@ class UserSearch extends Model
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {

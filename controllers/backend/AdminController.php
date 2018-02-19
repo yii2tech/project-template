@@ -12,17 +12,17 @@ use yii2tech\admin\CrudController;
 class AdminController extends CrudController
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $modelClass = 'app\models\db\Admin';
+    public $modelClass = \app\models\db\Admin::class;
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $searchModelClass = 'app\models\backend\AdminSearch';
+    public $searchModelClass = \app\models\backend\AdminSearch::class;
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -30,17 +30,17 @@ class AdminController extends CrudController
             parent::actions(),
             [
                 'delete' => [
-                    'class' => 'yii2tech\admin\actions\SafeDelete',
+                    'class' => \yii2tech\admin\actions\SafeDelete::class,
                 ],
                 'restore' => [
-                    'class' => 'yii2tech\admin\actions\Restore',
+                    'class' => \yii2tech\admin\actions\Restore::class,
                 ],
                 'suspend' => [
-                    'class' => 'yii2tech\admin\actions\Callback',
+                    'class' => \yii2tech\admin\actions\Callback::class,
                     'callback' => 'suspend'
                 ],
                 'activate' => [
-                    'class' => 'yii2tech\admin\actions\Callback',
+                    'class' => \yii2tech\admin\actions\Callback::class,
                     'callback' => 'activate'
                 ],
             ]

@@ -3,25 +3,23 @@
 namespace app\controllers\frontend;
 
 use Yii;
-use yii\base\Action;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 
 class SiteController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
         return [
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => \yii\captcha\CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => \yii\web\ErrorAction::class,
             ],
         ];
     }

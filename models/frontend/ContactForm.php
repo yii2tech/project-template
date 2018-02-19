@@ -18,7 +18,7 @@ class ContactForm extends Model
     public $verifyCode;
 
     /**
-     * @return array the validation rules.
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -30,7 +30,7 @@ class ContactForm extends Model
     }
 
     /**
-     * @return array customized attribute labels
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

@@ -6,12 +6,12 @@ use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
- * Base class for the 'ActiveMail' test cases.
+ * Base class for the test cases.
  */
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function setUp()
     {
@@ -20,7 +20,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function tearDown()
     {
@@ -33,7 +33,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      * @param array $config The application configuration, if needed
      * @param string $appClass name of the application class to create
      */
-    protected function mockApplication($config = [], $appClass = '\yii\console\Application')
+    protected function mockApplication($config = [], $appClass = \yii\console\Application::class)
     {
         new $appClass(ArrayHelper::merge(
             require dirname(dirname(__DIR__)) . '/config/main.php',
@@ -45,7 +45,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                     'i18n' => [
                         'translations' => [
                             '*' => [
-                                'class' => 'yii\i18n\PhpMessageSource',
+                                'class' => \yii\i18n\PhpMessageSource::class,
                                 'forceTranslation' => false,
                             ],
                         ],

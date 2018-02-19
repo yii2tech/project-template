@@ -12,7 +12,7 @@ use Yii;
 class User extends Identity
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -20,7 +20,7 @@ class User extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -30,7 +30,7 @@ class User extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -46,14 +46,14 @@ class User extends Identity
      */
     public function getAuthLogs()
     {
-        return $this->hasMany(UserAuthLog::className(), ['userId' => 'id']);
+        return $this->hasMany(UserAuthLog::class, ['userId' => 'id']);
     }
 
     // Logic :
 
     /**
      * Sends email notification about account creation.
-     * @return boolean success.
+     * @return bool success.
      */
     public function sendNewUserEmail()
     {
@@ -65,7 +65,7 @@ class User extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function sendSuspendEmail()
     {

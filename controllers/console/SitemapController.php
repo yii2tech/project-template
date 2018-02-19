@@ -6,6 +6,7 @@ use app\models\db\BlogPost;
 use app\models\filedb\Language;
 use Yii;
 use yii\console\Controller;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
 use yii2tech\sitemap\File;
@@ -20,7 +21,7 @@ use yii2tech\sitemap\IndexFile;
 class SitemapController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $defaultAction = 'generate';
 
@@ -32,7 +33,7 @@ class SitemapController extends Controller
     {
         if (!$this->acquireMutex()) {
             $this->stderr("Execution terminated: command is already running.\n", Console::FG_RED);
-            return self::EXIT_CODE_ERROR;
+            return ExitCode::USAGE;
         }
 
         $this->stdout("Generating sitemap files...\n");
@@ -79,7 +80,7 @@ class SitemapController extends Controller
 
         $this->releaseMutex();
 
-        return self::EXIT_CODE_NORMAL;
+        return ExitCode::OK;
     }
 
     /**
@@ -114,6 +115,6 @@ class SitemapController extends Controller
      */
     protected function composeMutexName()
     {
-        return $this->className() . '::' . $this->action->getUniqueId();
+        return get_class($this) . '::' . $this->action->getUniqueId();
     }
 }

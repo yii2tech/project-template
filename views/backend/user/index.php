@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'username',
         'email:email',
         [
-            'class' => DeleteStatusColumn::className(),
+            'class' => DeleteStatusColumn::class,
             'attribute' => 'statusId',
             'filter' => ArrayHelper::map(IdentityStatus::find()->all(), 'id', 'name'),
             'value' => function($data) {return $data->status->name;},
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],*/
 
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
         ],
     ],
 ]); ?>

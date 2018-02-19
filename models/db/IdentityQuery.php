@@ -35,7 +35,7 @@ class IdentityQuery extends \yii\db\ActiveQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return Identity[]|array
      */
     public function all($db = null)
@@ -44,7 +44,7 @@ class IdentityQuery extends \yii\db\ActiveQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return Identity|array|null
      */
     public function one($db = null)

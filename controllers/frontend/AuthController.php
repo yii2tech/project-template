@@ -5,7 +5,7 @@ namespace app\controllers\frontend;
 use app\models\frontend\PasswordResetRequestForm;
 use app\models\frontend\ResetPasswordForm;
 use Yii;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\filters\AccessControl;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
@@ -18,13 +18,13 @@ use app\models\frontend\LoginForm;
 class AuthController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -35,7 +35,7 @@ class AuthController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -56,11 +56,11 @@ class AuthController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -88,7 +88,6 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->send()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
                 return $this->goHome();
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
@@ -110,7 +109,7 @@ class AuthController extends Controller
     {
         try {
             $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
+        } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 

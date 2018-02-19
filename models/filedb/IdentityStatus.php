@@ -7,16 +7,13 @@ use yii2tech\filedb\ActiveRecord;
 /**
  * IdentityStatus
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
- *
- * @author Paul Klimov <pklimov@quartsoft.com>
- * @package app\models\filedb
  */
 class IdentityStatus extends ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function fileName()
     {

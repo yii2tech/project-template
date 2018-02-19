@@ -16,8 +16,9 @@ class SignupForm extends Model
     public $password;
     public $verifyCode;
 
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -27,17 +28,17 @@ class SignupForm extends Model
 
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => User::className()],
+            ['email', 'unique', 'targetClass' => User::class],
 
             ['password', 'required'],
-            ['password', PasswordValidator::className()],
+            ['password', PasswordValidator::class],
 
             ['verifyCode', 'captcha'],
         ];
     }
 
     /**
-     * @return array customized attribute labels
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -50,7 +51,7 @@ class SignupForm extends Model
 
     /**
      * Signs user up.
-     * @param boolean $runValidation whether to perform validation (calling [[validate()]])
+     * @param bool $runValidation whether to perform validation (calling [[validate()]])
      * before signup the user.
      * @return User|null the saved model or null if saving fails
      */

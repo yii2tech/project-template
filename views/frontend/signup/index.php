@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = Yii::t('auth', 'Signup');
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+            <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
                 'template' => '{image}{input}',
             ]) ?>
 

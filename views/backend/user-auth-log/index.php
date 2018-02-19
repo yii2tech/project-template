@@ -80,7 +80,7 @@ $authErrorLabels = $searchModel->authErrorLabels();
             'visible' => !$controller->isContextActive('user')
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => ActionColumn::class,
             'template' => '{view}',
         ],
     ],

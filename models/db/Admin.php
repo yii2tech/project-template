@@ -12,7 +12,7 @@ use Yii;
 class Admin extends Identity
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -20,7 +20,7 @@ class Admin extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -30,7 +30,7 @@ class Admin extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -40,7 +40,7 @@ class Admin extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function afterSave($insert, $changedAttributes)
     {
@@ -57,7 +57,7 @@ class Admin extends Identity
      */
     public function getAuthLogs()
     {
-        return $this->hasMany(AdminAuthLog::className(), ['adminId' => 'id']);
+        return $this->hasMany(AdminAuthLog::class, ['adminId' => 'id']);
     }
 
     // Logic :
@@ -76,7 +76,7 @@ class Admin extends Identity
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function sendSuspendEmail()
     {

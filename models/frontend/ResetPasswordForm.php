@@ -4,7 +4,7 @@ namespace app\models\frontend;
 
 use app\models\db\User;
 use app\validators\PasswordValidator;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\base\Model;
 use Yii;
 
@@ -26,28 +26,28 @@ class ResetPasswordForm extends Model
      *
      * @param string $token
      * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws InvalidParamException if token is empty or not valid
+     * @throws InvalidArgumentException if token is empty or not valid
      */
     public function __construct($token, $config = [])
     {
         if (empty($token) || !is_string($token)) {
-            throw new InvalidParamException(Yii::t('auth', 'Password reset token cannot be blank.'));
+            throw new InvalidArgumentException(Yii::t('auth', 'Password reset token cannot be blank.'));
         }
         $this->_user = User::findByPasswordResetToken($token);
         if (!$this->_user) {
-            throw new InvalidParamException(Yii::t('auth', 'Wrong password reset token.'));
+            throw new InvalidArgumentException(Yii::t('auth', 'Wrong password reset token.'));
         }
         parent::__construct($config);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             ['password', 'required'],
-            ['password', PasswordValidator::className()],
+            ['password', PasswordValidator::class],
         ];
     }
 

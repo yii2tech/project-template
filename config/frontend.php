@@ -13,7 +13,7 @@ return yii\helpers\ArrayHelper::merge(
                 'name' => 'MyProjectSession'
             ],
             'user' => [
-                'identityClass' => 'app\models\db\User',
+                'identityClass' => app\models\db\User::class,
                 'loginUrl' => ['auth/login'],
                 'identityCookie' => ['name' => 'MyProjectIdentity', 'httpOnly' => true],
                 'enableAutoLogin' => true,

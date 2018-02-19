@@ -7,7 +7,7 @@ use yii\db\Migration;
 class M160527132600CreateAppConfig extends Migration
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function up()
     {
@@ -24,7 +24,7 @@ class M160527132600CreateAppConfig extends Migration
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function down()
     {

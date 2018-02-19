@@ -16,7 +16,7 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
+                'class' => UserFixture::class,
                 'dataFile' => codecept_data_dir() . 'user.php'
             ]
         ]);
@@ -32,7 +32,7 @@ class SignupFormTest extends \Codeception\Test\Unit
 
         $user = $model->signup();
 
-        $this->assertInstanceOf('app\models\db\User', $user, 'user should be valid');
+        $this->assertInstanceOf(\app\models\db\User::class, $user, 'user should be valid');
 
         //expect($user->username)->equals('some_username');
         expect($user->email)->equals('some_email@example.com');

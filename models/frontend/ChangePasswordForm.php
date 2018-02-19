@@ -11,9 +11,6 @@ use yii\base\Model;
  * ChangePasswordForm serves for the user password change.
  *
  * @property Identity $user
- *
- * @author Paul Klimov <pklimov@quartsoft.com>
- * @package app\models
  */
 class ChangePasswordForm extends Model
 {
@@ -47,7 +44,7 @@ class ChangePasswordForm extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -56,10 +53,10 @@ class ChangePasswordForm extends Model
             ['oldPassword', 'validateOldPassword'],
 
             ['password', 'required'],
-            ['password', PasswordValidator::className()],
+            ['password', PasswordValidator::class],
 
             ['passwordRepeat', 'required'],
-            ['passwordRepeat', PasswordValidator::className()],
+            ['passwordRepeat', PasswordValidator::class],
 
             ['passwordRepeat', 'compare', 'compareAttribute' => 'password'],
         ];
@@ -81,7 +78,7 @@ class ChangePasswordForm extends Model
     }
 
     /**
-     * @return array customized attribute labels
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

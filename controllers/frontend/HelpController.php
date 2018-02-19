@@ -27,18 +27,18 @@ class HelpController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->send()) {
             Yii::$app->session->setFlash('success', Yii::t('help', 'Thank you for contacting us. We will respond to you as soon as possible.'));
-
             return $this->refresh();
-        } else {
-            $webUser = Yii::$app->user;
-            if (!$webUser->isGuest) {
-                /* @var $identity \app\models\db\User */
-                $identity = $webUser->identity;
-                $model->email = $identity->email;
-                $model->name = $identity->username;
-            }
+        }
+
+        $webUser = Yii::$app->user;
+        if (!$webUser->isGuest) {
+            /* @var $identity \app\models\db\User */
+            $identity = $webUser->identity;
+            $model->email = $identity->email;
+            $model->name = $identity->username;
         }
 
         return $this->render('contact', [

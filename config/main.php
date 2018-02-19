@@ -18,26 +18,26 @@ return yii\helpers\ArrayHelper::merge(
         ],
         'components' => [
             'cache' => [
-                'class' => 'yii\caching\FileCache',
+                'class' => yii\caching\FileCache::class,
                 'keyPrefix' => sha1(__FILE__),
             ],
             'mailer' => [
-                'class' => 'yii\swiftmailer\Mailer',
+                'class' => yii\swiftmailer\Mailer::class,
             ],
             'log' => [
                 'traceLevel' => YII_DEBUG ? 3 : 0,
                 'targets' => [
                     [
-                        'class' => 'yii\log\FileTarget',
+                        'class' => yii\log\FileTarget::class,
                         'levels' => ['error', 'warning'],
                     ],
                 ],
             ],
             'mutex' => [
-                'class' => 'yii\mutex\FileMutex'
+                'class' => yii\mutex\FileMutex::class
             ],
             'db' => [
-                'class' => 'yii\db\Connection',
+                'class' => yii\db\Connection::class,
                 'dsn' => 'mysql:host=localhost;dbname=myproject',
                 'username' => 'root',
                 'password' => '',
@@ -45,13 +45,13 @@ return yii\helpers\ArrayHelper::merge(
                 'enableSchemaCache' => YII_ENV !== 'dev',
             ],
             'filedb' => [
-                'class' => 'yii2tech\filedb\Connection',
+                'class' => yii2tech\filedb\Connection::class,
                 'path' => '@app/models/filedb/data',
             ],
             'configManager' => [
-                'class' => 'yii2tech\config\Manager',
+                'class' => yii2tech\config\Manager::class,
                 'storage' => [
-                    'class' => 'yii2tech\config\StorageDb',
+                    'class' => yii2tech\config\StorageDb::class,
                     'table' => 'AppConfig',
                 ],
                 'items' => [
@@ -75,11 +75,11 @@ return yii\helpers\ArrayHelper::merge(
             'i18n' => [
                 'translations' => [
                     'yii2tech-admin' => [
-                        'class' => 'yii\i18n\PhpMessageSource',
+                        'class' => yii\i18n\PhpMessageSource::class,
                         'basePath' => '@yii2tech/admin/messages',
                     ],
                     '*' => [
-                        'class' => 'yii\i18n\PhpMessageSource',
+                        'class' => yii\i18n\PhpMessageSource::class,
                         //'forceTranslation' => true,
                     ],
                 ],

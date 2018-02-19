@@ -7,23 +7,23 @@ use Yii;
 /**
  * This is the model class for table "AdminAuthLog".
  *
- * @property integer $id
- * @property integer $date
- * @property boolean $cookieBased
- * @property integer $duration
+ * @property int $id
+ * @property int $date
+ * @property bool $cookieBased
+ * @property int $duration
  * @property string $error
  * @property string $ip
  * @property string $host
  * @property string $url
  * @property string $userAgent
- * @property integer $adminId
+ * @property int $adminId
  *
  * @property Admin $admin
  */
 class AdminAuthLog extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -31,7 +31,7 @@ class AdminAuthLog extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -39,12 +39,12 @@ class AdminAuthLog extends \yii\db\ActiveRecord
             [['date', 'duration', 'adminId'], 'integer'],
             [['cookieBased'], 'boolean'],
             [['error', 'ip', 'host', 'url', 'userAgent'], 'string', 'max' => 255],
-            [['adminId'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['adminId' => 'id']],
+            [['adminId'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::class, 'targetAttribute' => ['adminId' => 'id']],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -67,6 +67,6 @@ class AdminAuthLog extends \yii\db\ActiveRecord
      */
     public function getAdmin()
     {
-        return $this->hasOne(Admin::className(), ['id' => 'adminId']);
+        return $this->hasOne(Admin::class, ['id' => 'adminId']);
     }
 }

@@ -12,13 +12,13 @@ use yii\web\Controller;
 class MaintenanceController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
@@ -30,13 +30,13 @@ class MaintenanceController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
         return [
             'flush-cache' => [
-                'class' => 'yii2tech\admin\actions\FlushCache',
+                'class' => \yii2tech\admin\actions\FlushCache::class,
                 'flash' => Yii::t('admin', 'Cache has been flushed.'),
                 'returnUrl' => ['index'],
             ],

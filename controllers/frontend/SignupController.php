@@ -13,7 +13,7 @@ use yii\web\Controller;
 class SignupController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function beforeAction($action)
     {

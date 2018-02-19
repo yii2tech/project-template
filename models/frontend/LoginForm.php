@@ -24,13 +24,13 @@ class LoginForm extends Model
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
             'authLog' => [
-                'class' => AuthLogLoginFormBehavior::className(),
+                'class' => AuthLogLoginFormBehavior::class,
                 'verifyRobotAttribute' => 'verifyCode',
                 'deactivateIdentity' => 'suspend'
             ],
@@ -38,7 +38,7 @@ class LoginForm extends Model
     }
 
     /**
-     * @return array the validation rules.
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -73,7 +73,7 @@ class LoginForm extends Model
     }
 
     /**
-     * @return array customized attribute labels
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -92,7 +92,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getIdentity(), $this->rememberMe ? 3600*24*30 : 0);
+            return Yii::$app->user->login($this->getIdentity(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
         return false;
     }

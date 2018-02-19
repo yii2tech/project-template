@@ -16,11 +16,11 @@ return yii\helpers\ArrayHelper::merge(
                 'appendTimestamp' => true,
             ],
             'session' => [
-                'class' => 'yii\web\Session'
+                'class' => yii\web\Session::class
             ],
             'user' => [
                 'as authLog' => [
-                    'class' => 'yii2tech\authlog\AuthLogWebUserBehavior'
+                    'class' => yii2tech\authlog\AuthLogWebUserBehavior::class
                 ],
             ],
             'errorHandler' => [
