@@ -15,9 +15,6 @@ if (YII_DEBUG) {
     ini_set('display_errors', 'off');
 }
 
-// default file permission mask:
-umask(0002); // invert of 0775
-
 if (empty($_SERVER['HTTP_HOST'])) {
     // Mock up HTTP params for the console application:
     $hostInfo = '{{hostInfo}}';
