@@ -1,4 +1,9 @@
 <?php
+/**
+ * @see \app\controllers\backend\AdminController
+ * @see \yii2tech\admin\actions\Create
+ * @see \yii2tech\admin\actions\Update
+ */
 
 use app\models\filedb\IdentityStatus;
 use yii\bootstrap\Html;

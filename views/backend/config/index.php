@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\backend\ConfigController::actionIndex()
+ */
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

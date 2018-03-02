@@ -1,4 +1,8 @@
 <?php
+/**
+ * @see \app\controllers\backend\UserAuthLogController
+ * @see \yii2tech\admin\actions\Index
+ */
 
 use app\models\db\UserAuthLog;
 use yii\bootstrap\Html;

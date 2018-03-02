@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\backend\SiteController::actionIndex()
+ */
 
 use yii\bootstrap\Html;
 

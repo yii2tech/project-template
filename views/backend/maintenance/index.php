@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\backend\MaintenanceController::actionIndex()
+ */
 
 use yii\bootstrap\Html;
 

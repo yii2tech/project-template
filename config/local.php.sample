@@ -31,6 +31,7 @@ $config = [
         // Uncomment following to use MemCache :
         /*'cache' => [
             'class' => yii\caching\MemCache::class,
+            'useMemcached' => true,
             'servers' => [
                 [
                     'host' => 'localhost',
@@ -62,6 +63,8 @@ if (YII_ENV === 'dev' && empty($_SERVER['argv'])) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => yii\debug\Module::class,
+        'dirMode' => 0775,
+        'fileMode' => 0775,
         'allowedIPs' => $developerIPs
     ];
 

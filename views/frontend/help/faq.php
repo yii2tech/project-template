@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\HelpController::actionFaq()
+ */
 
 /* @var $this yii\web\View */
 

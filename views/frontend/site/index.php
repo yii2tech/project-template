@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\SiteController::actionIndex()
+ */
 
 /* @var $this yii\web\View */
 

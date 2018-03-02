@@ -1,4 +1,8 @@
 <?php
+/**
+ * @see \app\controllers\backend\UserAuthLogController
+ * @see \yii2tech\admin\actions\View
+ */
 
 use yii\bootstrap\Html;
 use yii\widgets\DetailView;

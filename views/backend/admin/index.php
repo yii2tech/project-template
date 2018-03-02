@@ -1,4 +1,8 @@
 <?php
+/**
+ * @see \app\controllers\backend\AdminController
+ * @see \yii2tech\admin\actions\Index
+ */
 
 use app\models\filedb\IdentityStatus;
 use yii\grid\GridView;

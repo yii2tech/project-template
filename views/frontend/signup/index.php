@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\SignupController::actionIndex()
+ */
 
 use yii\captcha\Captcha;
 use yii\helpers\Html;

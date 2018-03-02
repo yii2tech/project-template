@@ -32,9 +32,11 @@ $config = [
     'basePath' => $basePath,
     'bootstrap' => ['log'],
     'name' => 'MyProject',
+    'enableCoreCommands' => false,
+    'defaultRoute' => 'init',
     'controllerMap' => [
         'init' => [
-            'class' => 'yii2tech\install\InitController',
+            'class' => yii2tech\install\InitController::class,
             'localDirectories' => [
                 '@app/web/assets',
                 '@app/web/sitemap',
@@ -103,7 +105,12 @@ $config = [
             ],
             // Cron jobs :
             /*'cronTab' => [
-                'mergeFilter' => "php {$basePath}/yii ",
+                'mergeFilter' => function ($line) use ($basePath) {
+                    if (stripos($line, 'php ' . escapeshellarg($basePath . '/yii') . ' ') !== false && stripos($line, ' self-update') === false) {
+                        return true;
+                    }
+                    return false;
+                },
                 'jobs' => [
                     [
                         'min' => '0',

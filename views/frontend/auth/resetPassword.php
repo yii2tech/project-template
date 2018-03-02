@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\AuthController::actionResetPassword()
+ */
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */

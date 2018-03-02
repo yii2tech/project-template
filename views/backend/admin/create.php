@@ -1,4 +1,8 @@
 <?php
+/**
+ * @see \app\controllers\backend\AdminController
+ * @see \yii2tech\admin\actions\Create
+ */
 
 /* @var $this yii\web\View */
 /* @var $model app\models\db\Admin */

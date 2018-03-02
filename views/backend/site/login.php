@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\backend\SiteController::actionLogin()
+ */
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\HelpController::actionContact()
+ */
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */

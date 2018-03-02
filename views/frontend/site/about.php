@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see \app\controllers\frontend\SiteController::actionAbout()
+ */
 
 use yii\bootstrap\Html;
 

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @see \app\controllers\backend\SiteController
+ * @see \yii\web\ErrorAction
+ */
 
 /* @var $this yii\web\View */
 /* @var $name string */
