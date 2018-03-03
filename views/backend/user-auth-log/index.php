@@ -29,6 +29,7 @@ $authErrorLabels = $searchModel->authErrorLabels();
 ?>
 
 <?= GridView::widget([
+    'as clientScript' => yii\jquery\GridViewClientScript::class,
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'rowOptions' => function ($model, $key, $index, $grid) {
@@ -84,7 +85,7 @@ $authErrorLabels = $searchModel->authErrorLabels();
             'visible' => !$controller->isContextActive('user')
         ],
         [
-            'class' => ActionColumn::class,
+            '__class' => ActionColumn::class,
             'template' => '{view}',
         ],
     ],

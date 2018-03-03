@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = Yii::t('user', 'Change Password');
     <div class="row">
         <div class="col-lg-5">
 
-            <?php $form = ActiveForm::begin(['id' => 'password-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'password-form', 'as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
             <?= $form->field($model, 'oldPassword')->passwordInput() ?>
 

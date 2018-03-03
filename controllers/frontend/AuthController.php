@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                '__class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -35,7 +35,7 @@ class AuthController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::class,
+                '__class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],

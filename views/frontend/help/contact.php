@@ -25,7 +25,7 @@ $formatter = Yii::$app->formatter;
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'contact-form', 'as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
             <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
 

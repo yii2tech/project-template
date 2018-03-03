@@ -9,35 +9,37 @@ return yii\helpers\ArrayHelper::merge(
         'name' => 'MyProject',
         'basePath' => dirname(__DIR__),
         'bootstrap' => [
-            'log',
             'configManager',
         ],
         'aliases' => [
             '@bower' => '@vendor/bower-asset',
-            '@npm'   => '@vendor/npm-asset',
+            '@npm' => '@vendor/npm-asset',
+        ],
+        'logger' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    '__class' => yii\log\FileTarget::class,
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
         ],
         'components' => [
             'cache' => [
-                'class' => yii\caching\FileCache::class,
-                'keyPrefix' => sha1(__FILE__),
-            ],
-            'mailer' => [
-                'class' => yii\swiftmailer\Mailer::class,
-            ],
-            'log' => [
-                'traceLevel' => YII_DEBUG ? 3 : 0,
-                'targets' => [
-                    [
-                        'class' => yii\log\FileTarget::class,
-                        'levels' => ['error', 'warning'],
-                    ],
+                '__class' => yii\caching\Cache::class,
+                'handler' => [
+                    '__class' => yii\caching\FileCache::class,
+                    'keyPrefix' => sha1(__FILE__),
                 ],
             ],
+            'mailer' => [
+                '__class' => yii\swiftmailer\Mailer::class,
+            ],
             'mutex' => [
-                'class' => yii\mutex\FileMutex::class
+                '__class' => yii\mutex\FileMutex::class
             ],
             'db' => [
-                'class' => yii\db\Connection::class,
+                '__class' => yii\db\Connection::class,
                 'dsn' => 'mysql:host=localhost;dbname=myproject',
                 'username' => 'root',
                 'password' => '',
@@ -45,13 +47,13 @@ return yii\helpers\ArrayHelper::merge(
                 'enableSchemaCache' => YII_ENV !== 'dev',
             ],
             'filedb' => [
-                'class' => yii2tech\filedb\Connection::class,
+                '__class' => yii2tech\filedb\Connection::class,
                 'path' => '@app/models/filedb/data',
             ],
             'configManager' => [
-                'class' => yii2tech\config\Manager::class,
+                '__class' => yii2tech\config\Manager::class,
                 'storage' => [
-                    'class' => yii2tech\config\StorageDb::class,
+                    '__class' => yii2tech\config\StorageDb::class,
                     'table' => 'AppConfig',
                 ],
                 'items' => [
@@ -75,11 +77,11 @@ return yii\helpers\ArrayHelper::merge(
             'i18n' => [
                 'translations' => [
                     'yii2tech-admin' => [
-                        'class' => yii\i18n\PhpMessageSource::class,
+                        '__class' => yii\i18n\PhpMessageSource::class,
                         'basePath' => '@yii2tech/admin/messages',
                     ],
                     '*' => [
-                        'class' => yii\i18n\PhpMessageSource::class,
+                        '__class' => yii\i18n\PhpMessageSource::class,
                         //'forceTranslation' => true,
                     ],
                 ],

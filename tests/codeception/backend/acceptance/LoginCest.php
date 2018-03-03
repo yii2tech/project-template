@@ -11,7 +11,7 @@ class LoginCest
     {
         $I->haveFixtures([
             'admin' => [
-                'class' => AdminFixture::class,
+                '__class' => AdminFixture::class,
                 'dataFile' => codecept_data_dir() . 'admin.php'
             ]
         ]);

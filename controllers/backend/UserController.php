@@ -33,11 +33,11 @@ class UserController extends CrudController
 
         return ArrayHelper::merge($actions, [
             'suspend' => [
-                'class' => \yii2tech\admin\actions\Callback::class,
+                '__class' => \yii2tech\admin\actions\Callback::class,
                 'callback' => 'suspend'
             ],
             'activate' => [
-                'class' => \yii2tech\admin\actions\Callback::class,
+                '__class' => \yii2tech\admin\actions\Callback::class,
                 'callback' => 'activate'
             ],
         ]);

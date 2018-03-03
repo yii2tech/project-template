@@ -18,7 +18,7 @@ class MaintenanceController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                '__class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
@@ -35,9 +35,9 @@ class MaintenanceController extends Controller
     public function actions()
     {
         return [
-            'flush-cache' => [
-                'class' => \yii2tech\admin\actions\FlushCache::class,
-                'flash' => Yii::t('admin', 'Cache has been flushed.'),
+            'clear-cache' => [
+                '__class' => \yii2tech\admin\actions\ClearCache::class,
+                'flash' => Yii::t('admin', 'Cache has been cleared.'),
                 'returnUrl' => ['index'],
             ],
         ];

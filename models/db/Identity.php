@@ -66,12 +66,12 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::class,
+                '__class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
             ],
             'softDelete' => [
-                'class' => SoftDeleteBehavior::class,
+                '__class' => SoftDeleteBehavior::class,
                 'softDeleteAttributeValues' => [
                     'statusId' => self::STATUS_DELETED,
                     'updatedAt' => function () {
@@ -86,7 +86,7 @@ abstract class Identity extends ActiveRecord implements IdentityInterface
                 ],
             ],
             'authLog' => [
-                'class' => AuthLogIdentityBehavior::class,
+                '__class' => AuthLogIdentityBehavior::class,
                 'defaultAuthLogData' => function ($model) {
                     return [
                         'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null,

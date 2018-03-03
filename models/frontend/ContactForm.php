@@ -5,6 +5,7 @@ namespace app\models\frontend;
 use app\models\db\Admin;
 use Yii;
 use yii\base\Model;
+use yii\captcha\CaptchaValidator;
 
 /**
  * ContactForm is the model behind the contact form.
@@ -25,7 +26,7 @@ class ContactForm extends Model
         return [
             [['name', 'email', 'subject', 'body'], 'required'],
             ['email', 'email'],
-            ['verifyCode', 'captcha', 'skipOnEmpty' => !Yii::$app->user->isGuest],
+            ['verifyCode', CaptchaValidator::class, 'skipOnEmpty' => !Yii::$app->user->isGuest],
         ];
     }
 

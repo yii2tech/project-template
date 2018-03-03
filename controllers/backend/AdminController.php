@@ -30,17 +30,17 @@ class AdminController extends CrudController
             parent::actions(),
             [
                 'delete' => [
-                    'class' => \yii2tech\admin\actions\SafeDelete::class,
+                    '__class' => \yii2tech\admin\actions\SafeDelete::class,
                 ],
                 'restore' => [
-                    'class' => \yii2tech\admin\actions\Restore::class,
+                    '__class' => \yii2tech\admin\actions\Restore::class,
                 ],
                 'suspend' => [
-                    'class' => \yii2tech\admin\actions\Callback::class,
+                    '__class' => \yii2tech\admin\actions\Callback::class,
                     'callback' => 'suspend'
                 ],
                 'activate' => [
-                    'class' => \yii2tech\admin\actions\Callback::class,
+                    '__class' => \yii2tech\admin\actions\Callback::class,
                     'callback' => 'activate'
                 ],
             ]

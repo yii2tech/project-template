@@ -19,7 +19,7 @@ class ConfigController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                '__class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,

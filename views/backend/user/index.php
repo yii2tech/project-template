@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?= GridView::widget([
+    'as clientScript' => yii\jquery\GridViewClientScript::class,
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
@@ -23,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'username',
         'email:email',
         [
-            'class' => DeleteStatusColumn::class,
+            '__class' => DeleteStatusColumn::class,
             'attribute' => 'statusId',
             'filter' => ArrayHelper::map(IdentityStatus::find()->all(), 'id', 'name'),
             'value' => function($data) {return $data->status->name;},
@@ -40,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],*/
 
         [
-            'class' => ActionColumn::class,
+            '__class' => ActionColumn::class,
         ],
     ],
 ]); ?>

@@ -44,7 +44,7 @@ class UserAuthLogController extends CrudController
             parent::behaviors(),
             [
                 'model' => [
-                    'class' => ContextModelControlBehavior::class,
+                    '__class' => ContextModelControlBehavior::class,
                     'contexts' => $this->contexts
                 ]
             ]

@@ -45,7 +45,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'i18n' => [
                         'translations' => [
                             '*' => [
-                                'class' => \yii\i18n\PhpMessageSource::class,
+                                '__class' => \yii\i18n\PhpMessageSource::class,
                                 'forceTranslation' => false,
                             ],
                         ],

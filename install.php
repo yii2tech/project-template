@@ -30,13 +30,12 @@ $isDebugServer = (stripos($hostName, 'debug') !== false || stripos($hostName, 'd
 $config = [
     'id' => 'project-installer',
     'basePath' => $basePath,
-    'bootstrap' => ['log'],
     'name' => 'MyProject',
     'enableCoreCommands' => false,
     'defaultRoute' => 'init',
     'controllerMap' => [
         'init' => [
-            'class' => yii2tech\install\InitController::class,
+            '__class' => yii2tech\install\InitController::class,
             'localDirectories' => [
                 '@app/web/assets',
                 '@app/web/sitemap',

@@ -34,7 +34,7 @@ class BackendAsset extends AssetBundle
      * {@inheritdoc}
      */
     public $depends = [
-        \yii\web\YiiAsset::class,
+        \yii\jquery\YiiAsset::class,
         \yii\bootstrap\BootstrapAsset::class,
     ];
 }

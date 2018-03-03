@@ -11,7 +11,7 @@ class LoginCest
     {
         $I->haveFixtures([
             'user' => [
-                'class' => UserFixture::class,
+                '__class' => UserFixture::class,
                 'dataFile' => codecept_data_dir() . 'login_data.php'
             ]
         ]);

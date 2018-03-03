@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = Yii::t('user', 'Profile');
     <div class="row">
         <div class="col-lg-5">
 
-            <?php $form = ActiveForm::begin(['id' => 'profile-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'profile-form', 'as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
             <?php /*<?= $form->field($model, 'username')->textInput() ?> */ ?>
 

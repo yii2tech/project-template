@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 <div class="row">
     <div class="col-lg-5">
 
-        <?php $form = ActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin(['as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
         <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 

@@ -30,7 +30,7 @@ class LoginForm extends Model
     {
         return [
             'authLog' => [
-                'class' => AuthLogLoginFormBehavior::class,
+                '__class' => AuthLogLoginFormBehavior::class,
                 'verifyRobotAttribute' => 'verifyCode',
                 'deactivateIdentity' => 'suspend'
             ],

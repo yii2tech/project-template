@@ -15,11 +15,14 @@ class SiteController extends Controller
     {
         return [
             'captcha' => [
-                'class' => \yii\captcha\CaptchaAction::class,
+                '__class' => \yii\captcha\CaptchaAction::class,
+                'driver' => [
+                    '__class' => \yii\captcha\ImagickDriver::class,
+                ],
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'error' => [
-                'class' => \yii\web\ErrorAction::class,
+                '__class' => \yii\web\ErrorAction::class,
             ],
         ];
     }

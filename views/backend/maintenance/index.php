@@ -12,9 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $rows = [
     [
-        'title' => Yii::t('admin-content', 'Flush Cache'),
+        'title' => Yii::t('admin-content', 'Clear Cache'),
         'description' => Yii::t('admin-content', 'Clear application runtime cache, making sure recent changes appear.'),
-        'url' => ['flush-cache'],
+        'url' => ['clear-cache'],
         'icon' => 'refresh',
         'options' => [
             'class' => 'btn btn-primary',

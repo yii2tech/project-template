@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = Yii::t('auth', 'Signup');
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'form-signup', 'as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 

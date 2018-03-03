@@ -20,23 +20,24 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=5.6.0",
-        "yiisoft/yii2": "~2.0.14",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "yii2tech/admin": "*",
-        "yii2tech/ar-softdelete": "*",
-        "yii2tech/authlog": "*",
-        "yii2tech/config": "*",
-        "yii2tech/install": "*",
-        "yii2tech/filedb": "*",
-        "yii2tech/selfupdate": "*",
-        "yii2tech/sitemap": "*"
+        "php": ">=7.1.0",
+        "yiisoft/yii2": "2.1.x-dev",
+        "yiisoft/yii2-jquery": "1.0.x-dev",
+        "yiisoft/yii2-captcha": "1.0.x-dev",
+        "yiisoft/yii2-bootstrap": "2.2.x-dev",
+        "yiisoft/yii2-swiftmailer": "2.2.x-dev",
+        "yii2tech/admin": "2.0.x-dev",
+        "yii2tech/ar-softdelete": "2.0.x-dev",
+        "yii2tech/authlog": "2.0.x-dev",
+        "yii2tech/config": "2.0.x-dev",
+        "yii2tech/install": "2.0.x-dev",
+        "yii2tech/filedb": "2.0.x-dev",
+        "yii2tech/selfupdate": "2.0.x-dev",
+        "yii2tech/sitemap": "2.0.x-dev"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*",
+        "yiisoft/yii2-debug": "2.1.x-dev",
+        "yiisoft/yii2-gii": "2.1.x-dev",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1"
     },
@@ -46,6 +47,12 @@
             "url": "https://asset-packagist.org"
         }
     ],
+    "autoload": {
+        "psr-4": {"app\\": ""}
+    },
+    "autoload-dev": {
+        "psr-4": {"tests\\": "tests"}
+    },
     "config": {
         "process-timeout": 1800
     }

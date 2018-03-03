@@ -30,7 +30,7 @@ $config = [
     'components' => [
         // Uncomment following to use MemCache :
         /*'cache' => [
-            'class' => yii\caching\MemCache::class,
+            '__class' => yii\caching\MemCache::class,
             'useMemcached' => true,
             'servers' => [
                 [
@@ -62,7 +62,7 @@ if (YII_ENV === 'dev' && empty($_SERVER['argv'])) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => yii\debug\Module::class,
+        '__class' => yii\debug\Module::class,
         'dirMode' => 0775,
         'fileMode' => 0775,
         'allowedIPs' => $developerIPs
@@ -70,13 +70,13 @@ if (YII_ENV === 'dev' && empty($_SERVER['argv'])) {
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class' => yii\gii\Module::class,
+        '__class' => yii\gii\Module::class,
         'generators' => [
             'adminMainFrame' => [
-                'class' => yii2tech\admin\gii\mainframe\Generator::class
+                '__class' => yii2tech\admin\gii\mainframe\Generator::class
             ],
             'adminCrud' => [
-                'class' => yii2tech\admin\gii\crud\Generator::class
+                '__class' => yii2tech\admin\gii\crud\Generator::class
             ],
         ],
         'allowedIPs' => $developerIPs

@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = Yii::t('auth', 'Reset password');
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'reset-password-form', 'as clientScript' => yii\jquery\ActiveFormClientScript::class]); ?>
 
             <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
 

@@ -6,6 +6,7 @@ use app\models\db\User;
 use app\validators\PasswordValidator;
 use yii\base\Model;
 use Yii;
+use yii\captcha\CaptchaValidator;
 
 /**
  * Signup form
@@ -33,7 +34,7 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', PasswordValidator::class],
 
-            ['verifyCode', 'captcha'],
+            ['verifyCode', CaptchaValidator::class],
         ];
     }
 

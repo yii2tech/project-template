@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-5">
 
         <?php $form = ActiveForm::begin([
-            'id' => 'config-form'
+            'id' => 'config-form',
+            'as clientScript' => yii\jquery\ActiveFormClientScript::class
         ]); ?>
 
         <?php foreach ($models as $key => $model): ?>
